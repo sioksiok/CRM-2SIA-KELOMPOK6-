@@ -8,15 +8,17 @@ import {
   User,
   LogIn,
   UserPlus,
+  Gift,
 } from 'lucide-react'
-import { BsPeople } from 'react-icons/bs'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
   { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
-   { name: 'Pelanggan', icon: <BsPeople />, path: '/customer' },
+  { name: 'Pelanggan', icon: <User/>, path: '/customer' },
+  { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
+  { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
 ]
 
 const accountItems = [
