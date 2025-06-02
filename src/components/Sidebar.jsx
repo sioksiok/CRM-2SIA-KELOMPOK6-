@@ -18,11 +18,9 @@ const menuItems = [
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
   { name: 'Pelanggan', icon: <Users />, path: '/customer' },
-  { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' }
-
-  { name: 'Pelanggan', icon: <User/>, path: '/customer' },
+  { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' },
   { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
-  { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
+  { name: 'Promo Member', icon: <Users />, path: '/promo-member' }
 ]
 
 const accountItems = [
