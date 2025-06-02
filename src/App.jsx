@@ -1,5 +1,6 @@
-import { Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
+
 import Dashboard from "./pages/Dashboard";
 import CustomerManagement from "./pages/CustomerManagement";
 import SalesManagement from "./pages/SalesManagement";
@@ -7,10 +8,19 @@ import ProductManagement from "./pages/Produk";
 
 import FormPendaftaranMember from "./pages/FormPendaftaranMember";
 import PromoMember from "./pages/PromoMember";
+import CekStatusMember from "./pages/CekStatusMember";
+import RekamMedis from "./pages/rekamMedis";
+import PromoUmum from "./pages/PromoUmum";
+import RiwayatLayanan from "./pages/RiwayatLayanan";
+
+import Akun from "./pages/Akun";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
     <Routes>
+      {/* Routes yang menggunakan layout utama (sidebar, header, dll) */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Dashboard />} />
          <Route path="/customer" element={<CustomerManagement />} />
@@ -18,7 +28,16 @@ function App() {
         <Route path="/Produk" element={<ProductManagement />} />
          <Route path="/daftar-member" element={<FormPendaftaranMember />} />
          <Route path="/promo-member" element={<PromoMember />} />
+        <Route path="/cek-status-member" element={<CekStatusMember />} />
+        <Route path="/rekam-medis" element={<RekamMedis />} />
+        <Route path="/promo-umum" element={<PromoUmum />} />
+        <Route path="/riwayat-layanan" element={<RiwayatLayanan />} />
+        <Route path="/akun" element={<Akun />} />
       </Route>
+
+      {/* Routes tanpa layout (full screen, tanpa sidebar) */}
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 }

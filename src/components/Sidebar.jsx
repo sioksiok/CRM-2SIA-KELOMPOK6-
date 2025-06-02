@@ -11,6 +11,7 @@ import {
   Gift,
 } from 'lucide-react'
 //import { BsPeople } from 'react-icons/bs'
+import { FaHistory, FaNotesMedical, FaTags } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
@@ -21,6 +22,12 @@ const menuItems = [
   { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' },
   { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
   { name: 'Promo Member', icon: <Users />, path: '/promo-member' }
+  { name: 'Cek Status Member', icon: <User />, path: '/cek-status-member' },
+  { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+  { name: 'Promo Umum', icon: <FaTags/>, path: '/promo-umum' },
+  { name: 'Riwayat Layanan', icon: <FaHistory />, path: '/riwayat-layanan' },
+  
+
 ]
 
 const accountItems = [
