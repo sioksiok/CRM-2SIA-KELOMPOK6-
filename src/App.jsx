@@ -5,6 +5,8 @@ import CustomerManagement from "./pages/CustomerManagement";
 import SalesManagement from "./pages/SalesManagement";
 import ProductManagement from "./pages/Produk";
 
+import FormPendaftaranMember from "./pages/FormPendaftaranMember";
+import PromoMember from "./pages/PromoMember";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
          <Route path="/customer" element={<CustomerManagement />} />
         <Route path="/penjualan" element={<SalesManagement />} />
         <Route path="/Produk" element={<ProductManagement />} />
+         <Route path="/daftar-member" element={<FormPendaftaranMember />} />
+         <Route path="/promo-member" element={<PromoMember />} />
       </Route>
     </Routes>
   );

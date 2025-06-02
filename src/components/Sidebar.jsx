@@ -8,6 +8,7 @@ import {
   User,
   LogIn,
   UserPlus,
+  Gift,
 } from 'lucide-react'
 //import { BsPeople } from 'react-icons/bs'
 import { Link, useLocation } from 'react-router-dom'
@@ -19,6 +20,9 @@ const menuItems = [
   { name: 'Pelanggan', icon: <Users />, path: '/customer' },
   { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' }
 
+  { name: 'Pelanggan', icon: <User/>, path: '/customer' },
+  { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
+  { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
 ]
 
 const accountItems = [
