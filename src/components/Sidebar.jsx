@@ -21,7 +21,7 @@ const menuItems = [
   { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
-    { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+  { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   
 
 ]
