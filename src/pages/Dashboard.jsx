@@ -41,8 +41,8 @@ const Dashboard = () => {
       {
         label: "Pendapatan Bulanan (2024)",
         data: [18, 22, 20, 25, 27, 30],
-        borderColor: '#800000',
-        backgroundColor: '#800000',
+        borderColor: '784040',
+        backgroundColor: '784040',
         tension: 0.4,
       },
     ],
