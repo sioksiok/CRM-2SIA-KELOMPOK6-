@@ -16,6 +16,9 @@ import RiwayatLayanan from "./pages/RiwayatLayanan";
 import Akun from "./pages/Akun";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import PromoMember from "./pages/PromoMember";
+import ManagePromoAdmin from "./pages/ManagePromoAdmin";
+import AktivitasPelanggan from "./pages/AktivitasPelanggan";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
         <Route path="/promo-umum" element={<PromoUmum />} />
         <Route path="/riwayat-layanan" element={<RiwayatLayanan />} />
         <Route path="/akun" element={<Akun />} />
+         <Route path="/promo-member" element={<PromoMember />} />
+         <Route path="/manage-promo-admin" element={<ManagePromoAdmin />} />
+         <Route path="/aktivitas-pelanggan" element={<AktivitasPelanggan />} />
       </Route>
 
       {/* Routes tanpa layout (full screen, tanpa sidebar) */}

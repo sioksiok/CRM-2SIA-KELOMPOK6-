@@ -25,6 +25,10 @@ const menuItems = [
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-Medis' },
   { name: 'Promo Umum', icon: <FaTags />, path: '/promo-umum' },
   { name: 'Riwayat Layanan', icon: <FaHistory />, path: '/riwayat-layanan' },
+  { name: 'Daftar Kontak Pelanggan', icon: <User/>, path: '/customer' },
+  { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
+  { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
+  { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
 ]
 
 const accountItems = [
