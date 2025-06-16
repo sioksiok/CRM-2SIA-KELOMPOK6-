@@ -9,8 +9,10 @@ import {
   LogIn,
   UserPlus,
   Gift,
+  ShoppingBagIcon,
 } from 'lucide-react'
 import { FaHistory, FaNotesMedical, FaTags } from 'react-icons/fa'
+import { FaQ } from 'react-icons/fa6'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
@@ -29,6 +31,12 @@ const menuItems = [
   { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
   { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
   { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
+  { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
+  { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+  { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
+    { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+  
+
 ]
 
 const accountItems = [

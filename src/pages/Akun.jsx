@@ -1,16 +1,11 @@
 import { useState } from "react";
 
 export default function AccountSettings() {
-  // State profil
   const [name, setName] = useState("John Doe");
   const [email, setEmail] = useState("john@example.com");
-
-  // State password
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  // State notifikasi
   const [emailNotif, setEmailNotif] = useState(true);
   const [smsNotif, setSmsNotif] = useState(false);
 
@@ -33,163 +28,103 @@ export default function AccountSettings() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-6"
-      style={{ backgroundColor: "#800000", fontFamily: "'Poppins', sans-serif" }}
+      className="min-h-screen flex items-center justify-center px-4 py-10"
+      style={{
+        background: "linear-gradient(135deg, #800000 0%, #a52a2a 100%)",
+      }}
     >
-      <div
-        className="max-w-3xl w-full rounded-3xl p-10 shadow-2xl"
-        style={{
-          backgroundColor: "#fff0f0",
-          border: "3px solid #660000",
-          boxShadow: "0 12px 30px rgba(128, 0, 0, 0.5)",
-        }}
-      >
-        <h1
-          className="text-4xl font-extrabold mb-10 text-center tracking-wide"
-          style={{ color: "#800000", textShadow: "1px 1px 3px rgba(102,0,0,0.7)" }}
-        >
-          Pengaturan Akun
+      <div className="max-w-5xl w-full">
+        <h1 className="text-3xl font-bold mb-8 text-center text-white drop-shadow-md">
+          Pengaturan Akun Admin
         </h1>
 
-        {/* Form Profil */}
-        <section className="mb-12">
-          <h2
-            className="text-2xl font-semibold mb-6"
-            style={{ color: "#800000", letterSpacing: "0.05em" }}
-          >
-            Profil
-          </h2>
-          <form onSubmit={handleProfileSubmit} className="space-y-6">
-            <input
-              type="text"
-              placeholder="Nama Lengkap"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="w-full px-5 py-3 rounded-xl border text-lg font-medium placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-maroon"
-              style={{
-                borderColor: "#800000",
-                backgroundColor: "#fff5f5",
-                color: "#800000",
-                transition: "all 0.3s ease",
-              }}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-5 py-3 rounded-xl border text-lg font-medium placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-maroon"
-              style={{
-                borderColor: "#800000",
-                backgroundColor: "#fff5f5",
-                color: "#800000",
-                transition: "all 0.3s ease",
-              }}
-            />
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl font-semibold text-white tracking-wide shadow-md transition hover:bg-[#990000] active:scale-95"
-              style={{ backgroundColor: "#800000" }}
-            >
-              Simpan Profil
-            </button>
-          </form>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Profil Card */}
+          <div className="bg-white border border-maroon rounded-xl shadow-md p-6">
+            <h2 className="text-xl font-semibold text-maroon mb-4">Informasi Profil</h2>
+            <form onSubmit={handleProfileSubmit} className="space-y-4">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Nama Lengkap"
+                className="w-full px-4 py-3 border border-maroon rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
+              />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                className="w-full px-4 py-3 border border-maroon rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
+              />
+              <button
+                type="submit"
+                className="w-full bg-maroon text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition"
+              >
+                Simpan Profil
+              </button>
+            </form>
+          </div>
 
-        {/* Form Ganti Password */}
-        <section className="mb-12">
-          <h2
-            className="text-2xl font-semibold mb-6"
-            style={{ color: "#800000", letterSpacing: "0.05em" }}
-          >
-            Ganti Password
-          </h2>
-          <form onSubmit={handlePasswordSubmit} className="space-y-6">
-            <input
-              type="password"
-              placeholder="Password Saat Ini"
-              value={currentPassword}
-              onChange={(e) => setCurrentPassword(e.target.value)}
-              required
-              className="w-full px-5 py-3 rounded-xl border text-lg font-medium placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-maroon"
-              style={{
-                borderColor: "#800000",
-                backgroundColor: "#fff5f5",
-                color: "#800000",
-                transition: "all 0.3s ease",
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Password Baru"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              required
-              className="w-full px-5 py-3 rounded-xl border text-lg font-medium placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-maroon"
-              style={{
-                borderColor: "#800000",
-                backgroundColor: "#fff5f5",
-                color: "#800000",
-                transition: "all 0.3s ease",
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Konfirmasi Password Baru"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="w-full px-5 py-3 rounded-xl border text-lg font-medium placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-maroon"
-              style={{
-                borderColor: "#800000",
-                backgroundColor: "#fff5f5",
-                color: "#800000",
-                transition: "all 0.3s ease",
-              }}
-            />
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl font-semibold text-white tracking-wide shadow-md transition hover:bg-[#990000] active:scale-95"
-              style={{ backgroundColor: "#800000" }}
-            >
-              Ganti Password
-            </button>
-          </form>
-        </section>
+          {/* Password Card */}
+          <div className="bg-white border border-maroon rounded-xl shadow-md p-6">
+            <h2 className="text-xl font-semibold text-maroon mb-4">Ganti Password</h2>
+            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+              <input
+                type="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                placeholder="Password Saat Ini"
+                className="w-full px-4 py-3 border border-maroon rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
+              />
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="Password Baru"
+                className="w-full px-4 py-3 border border-maroon rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
+              />
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Konfirmasi Password Baru"
+                className="w-full px-4 py-3 border border-maroon rounded-lg focus:outline-none focus:ring-2 focus:ring-maroon"
+              />
+              <button
+                type="submit"
+                className="w-full bg-maroon text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition"
+              >
+                Ganti Password
+              </button>
+            </form>
+          </div>
+        </div>
 
-        {/* Preferensi Notifikasi */}
-        <section>
-          <h2
-            className="text-2xl font-semibold mb-6"
-            style={{ color: "#800000", letterSpacing: "0.05em" }}
-          >
-            Preferensi Notifikasi
-          </h2>
-          <div className="flex flex-col gap-5 text-lg font-medium" style={{ color: "#800000" }}>
-            <label className="flex items-center gap-4 cursor-pointer select-none">
+        {/* Notifikasi Card */}
+        <div className="mt-10 bg-white border border-maroon rounded-xl shadow-md p-6">
+          <h2 className="text-xl font-semibold text-maroon mb-4">Preferensi Notifikasi</h2>
+          <div className="space-y-3 text-maroon font-medium">
+            <label className="flex items-center space-x-3">
               <input
                 type="checkbox"
                 checked={emailNotif}
                 onChange={() => setEmailNotif(!emailNotif)}
-                className="w-6 h-6 rounded border-2 border-maroon checked:bg-maroon transition"
-                style={{ borderColor: "#800000" }}
+                className="w-5 h-5 accent-maroon"
               />
-              Terima notifikasi via Email
+              <span>Terima notifikasi via Email</span>
             </label>
-            <label className="flex items-center gap-4 cursor-pointer select-none">
+            <label className="flex items-center space-x-3">
               <input
                 type="checkbox"
                 checked={smsNotif}
                 onChange={() => setSmsNotif(!smsNotif)}
-                className="w-6 h-6 rounded border-2 border-maroon checked:bg-maroon transition"
-                style={{ borderColor: "#800000" }}
+                className="w-5 h-5 accent-maroon"
               />
-              Terima notifikasi via SMS
+              <span>Terima notifikasi via WA</span>
             </label>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );
