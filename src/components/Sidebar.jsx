@@ -16,9 +16,10 @@ const menuItems = [
   { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
-  { name: 'Pelanggan', icon: <User/>, path: '/customer' },
-  { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
+  { name: 'Daftar Kontak Pelanggan', icon: <User/>, path: '/customer' },
   { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
+  { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
+  { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
 ]
 
 const accountItems = [
