@@ -8,19 +8,20 @@ import {
   User,
   LogIn,
   UserPlus,
+  ShoppingBagIcon,
 } from 'lucide-react'
 import { FaHistory, FaNotesMedical, FaTags } from 'react-icons/fa'
+import { FaQ } from 'react-icons/fa6'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
   { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
-  { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' },
-  { name: 'Cek Status Member', icon: <User />, path: '/cek-status-member' },
+  { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
-  { name: 'Promo Umum', icon: <FaTags/>, path: '/promo-umum' },
-  { name: 'Riwayat Layanan', icon: <FaHistory />, path: '/riwayat-layanan' },
+  { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
+    { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   
 
 ]

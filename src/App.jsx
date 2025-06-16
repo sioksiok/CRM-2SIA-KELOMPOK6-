@@ -2,15 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 
 import Dashboard from "./pages/Dashboard";
-import SalesManagement from "./pages/SalesManagement";
 import CekStatusMember from "./pages/CekStatusMember";
 import RekamMedis from "./pages/rekamMedis";
-import PromoUmum from "./pages/PromoUmum";
-import RiwayatLayanan from "./pages/RiwayatLayanan";
 
 import Akun from "./pages/Akun";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import PemesananLayanan from "./pages/PemesananLayananProduk";
+import PusatBantuan from "./pages/PusatBantuan";
 
 function App() {
   return (
@@ -18,11 +17,10 @@ function App() {
       {/* Routes yang menggunakan layout utama (sidebar, header, dll) */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/penjualan" element={<SalesManagement />} />
         <Route path="/cek-status-member" element={<CekStatusMember />} />
         <Route path="/rekam-medis" element={<RekamMedis />} />
-        <Route path="/promo-umum" element={<PromoUmum />} />
-        <Route path="/riwayat-layanan" element={<RiwayatLayanan />} />
+        <Route path="/pusat-bantuan" element={<PusatBantuan />} />
+        <Route path="/pemesanan-layanan-produk" element={<PemesananLayanan />} />
         <Route path="/akun" element={<Akun />} />
       </Route>
 
