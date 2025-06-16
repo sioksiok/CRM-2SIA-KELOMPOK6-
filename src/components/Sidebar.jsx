@@ -21,7 +21,7 @@ const menuItems = [
   { name: 'Pelanggan', icon: <Users />, path: '/customer' },
   { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' },
   { name: 'Form Daftar Member', icon: <UserPlus />, path: '/daftar-member' },
-  { name: 'Promo Member', icon: <Users />, path: '/promo-member' }
+  { name: 'Promo Member', icon: <Users />, path: '/promo-member' },
   { name: 'Cek Status Member', icon: <User />, path: '/cek-status-member' },
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
   { name: 'Promo Umum', icon: <FaTags/>, path: '/promo-umum' },
