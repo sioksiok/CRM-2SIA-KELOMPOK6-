@@ -23,60 +23,60 @@ ChartJS.register(
 
 const Dashboard = () => {
   const annualRevenueData = {
-    labels: ["2016", "2017", "2018", "2019", "2020", "2021"],
+    labels: ["2019", "2020", "2021", "2022", "2023", "2024"],
     datasets: [
       {
-        label: "Total Pendapatan Tahunan",
-        data: [5000, 22000, 18000, 35000, 24000, 29000],
-        borderColor: '#FFC107',
-        backgroundColor: '#FFC107',
+        label: "Pendapatan Tahunan (dalam juta)",
+        data: [120, 150, 170, 210, 240, 280],
+        borderColor: '#800000',
+        backgroundColor: '#800000',
         tension: 0.4,
       },
     ],
   }
 
   const monthlyRevenueData = {
-    labels: ["2016", "2017", "2018", "2019", "2020", "2021"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
     datasets: [
       {
-        label: "Pendapatan Bulanan",
-        data: [11000, 19000, 32000, 28000, 25000, 37000],
-        borderColor: '#00BCD4',
-        backgroundColor: '#00BCD4',
+        label: "Pendapatan Bulanan (2024)",
+        data: [18, 22, 20, 25, 27, 30],
+        borderColor: '#800000',
+        backgroundColor: '#800000',
         tension: 0.4,
       },
     ],
   }
 
-  const investments = [
-    { name: 'Apple Store', value: '$54,000', return: '+16%', sector: 'E-commerce, Marketplace' },
-    { name: 'Samsung Mobile', value: '$25,300', return: '-4%', sector: 'E-commerce, Marketplace' },
-    { name: 'Tesla Motors', value: '$8,200', return: '+25%', sector: 'Electric Vehicles' },
+  const services = [
+    { name: 'Facial Glow', revenue: 'Rp 12.000.000', growth: '+15%', kategori: 'Perawatan Wajah' },
+    { name: 'Laser Treatment', revenue: 'Rp 9.500.000', growth: '+8%', kategori: 'Perawatan Kulit' },
+    { name: 'Botox Injection', revenue: 'Rp 7.800.000', growth: '+10%', kategori: 'Anti-Aging' },
   ]
 
   const serviceTrends = [
-    { no: '01.', name: 'Trivago', price: '$520', return: '+5%' },
-    { no: '02.', name: 'Canon', price: '$480', return: '+10%' },
-    { no: '03.', name: 'Uber Food', price: '$350', return: '-3%' },
-    { no: '04.', name: 'Nokia', price: '$940', return: '+2%' },
-    { no: '05.', name: 'Tiktok', price: '$670', return: '-12%' },
+    { no: '01.', name: 'Acne Treatment', price: 'Rp 350.000', return: '+12%' },
+    { no: '02.', name: 'Chemical Peeling', price: 'Rp 500.000', return: '+9%' },
+    { no: '03.', name: 'Microneedling', price: 'Rp 700.000', return: '+6%' },
+    { no: '04.', name: 'Hair Removal Laser', price: 'Rp 800.000', return: '+5%' },
+    { no: '05.', name: 'Anti Aging', price: 'Rp 1.200.000', return: '+11%' },
   ]
 
   return (
-    <div className="p-6 bg-[#f4f4f4] min-h-screen">
+    <div className="p-6 bg-[#800000] min-h-screen">
       {/* Header Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-xl p-4 shadow text-center">
-          <p className="text-sm text-gray-600">Total Invested Amount</p>
-          <h2 className="text-2xl font-bold">$150,000</h2>
+          <p className="text-sm text-gray-600">Total Pendapatan</p>
+          <h2 className="text-2xl font-bold">Rp 280.000.000</h2>
         </div>
         <div className="bg-white rounded-xl p-4 shadow text-center">
-          <p className="text-sm text-gray-600">Number of Investments</p>
-          <h2 className="text-2xl font-bold">1,250</h2>
+          <p className="text-sm text-gray-600">Jumlah Layanan Aktif</p>
+          <h2 className="text-2xl font-bold">32 Layanan</h2>
         </div>
         <div className="bg-white rounded-xl p-4 shadow text-center">
-          <p className="text-sm text-gray-600">Rate of Return</p>
-          <h2 className="text-2xl font-bold text-green-600">+5.80%</h2>
+          <p className="text-sm text-gray-600">Tingkat Kepuasan</p>
+          <h2 className="text-2xl font-bold text-green-600">98%</h2>
         </div>
       </div>
 
@@ -90,21 +90,21 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Investments and Trends */}
+      {/* Services and Trends */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h3 className="font-semibold mb-4">My Investment</h3>
-          {investments.map((inv) => (
-            <div key={inv.name} className="bg-white rounded-xl p-4 mb-3 shadow">
+          <h3 className="font-semibold mb-4">Layanan Terlaris</h3>
+          {services.map((svc) => (
+            <div key={svc.name} className="bg-white rounded-xl p-4 mb-3 shadow">
               <div className="flex justify-between items-center">
                 <div>
-                  <h4 className="font-bold text-lg">{inv.name}</h4>
-                  <p className="text-sm text-gray-500">{inv.sector}</p>
+                  <h4 className="font-bold text-lg">{svc.name}</h4>
+                  <p className="text-sm text-gray-500">{svc.kategori}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold">{inv.value}</p>
-                  <p className={inv.return.includes('-') ? 'text-red-500' : 'text-green-600'}>
-                    {inv.return}
+                  <p className="font-bold">{svc.revenue}</p>
+                  <p className={svc.growth.includes('-') ? 'text-red-500' : 'text-green-600'}>
+                    {svc.growth}
                   </p>
                 </div>
               </div>
@@ -118,10 +118,10 @@ const Dashboard = () => {
             <table className="w-full text-sm text-left">
               <thead className="bg-gray-100 text-gray-600">
                 <tr>
-                  <th className="p-3">SL No</th>
-                  <th className="p-3">Name</th>
-                  <th className="p-3">Price</th>
-                  <th className="p-3">Return</th>
+                  <th className="p-3">No</th>
+                  <th className="p-3">Nama</th>
+                  <th className="p-3">Harga</th>
+                  <th className="p-3">Pertumbuhan</th>
                 </tr>
               </thead>
               <tbody>
