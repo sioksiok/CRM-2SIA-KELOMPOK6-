@@ -20,6 +20,7 @@ const menuItems = [
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
   { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+  { name: 'User', icon: <FaNotesMedical />, path: '/user' },
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   
