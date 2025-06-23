@@ -23,10 +23,14 @@ const menuItems = [
   { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
   { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+  { name: 'User', icon: <FaNotesMedical />, path: '/user' },
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+<<<<<<< HEAD
   { name: 'User', icon: <User />, path: '/user' },
   
+=======
+>>>>>>> KELOMPOK6/putri
   
 ]
 

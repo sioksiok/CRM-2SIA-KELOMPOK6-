@@ -50,3 +50,7 @@ const UserForm = ({ addUser, updateUser, editingUser }) => {
 };
 
 export default UserForm;
+<<<<<<< HEAD
+=======
+
+>>>>>>> KELOMPOK6/putri
