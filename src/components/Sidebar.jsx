@@ -20,6 +20,11 @@ const menuItems = [
   { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
   { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
   { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
+  { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
+  { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+  { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
+  { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+  { name: 'User', icon: <User />, path: '/user' },
 ]
 
 const accountItems = [
