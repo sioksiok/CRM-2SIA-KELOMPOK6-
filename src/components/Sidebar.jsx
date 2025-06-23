@@ -17,11 +17,7 @@ import { Link, useLocation } from 'react-router-dom'
 const menuItems = [
   { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
   { name: 'Produk', icon: <Box />, path: '/produk' },
-  { name: 'Pelanggan', icon: <Users />, path: '/customer' },
-  { name: 'Penjualan', icon: <ShoppingCart />, path: '/penjualan' },
   { name: 'Promo Member', icon: <Users />, path: '/promo-member' },
-  { name: 'Cek Status Member', icon: <User />, path: '/cek-status-member' },
-  { name: 'Riwayat Layanan', icon: <FaHistory />, path: '/riwayat-layanan' },
   { name: 'Daftar Kontak Pelanggan', icon: <User/>, path: '/customer' },
   { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
   { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
@@ -29,6 +25,9 @@ const menuItems = [
   { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+  { name: 'User', icon: <User />, path: '/user' },
+  
+  
 ]
 
 const accountItems = [
