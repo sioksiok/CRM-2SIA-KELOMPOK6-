@@ -1,31 +1,5 @@
-import React, { useState } from "react";
-
-const initialProducts = [
-  {
-    id: "aira-1",
-    name: "Serum Whitening Aira Klinik",
-    category: "Kosmetik",
-    stock: 20,
-    price: 150000,
-    active: true,
-  },
-  {
-    id: "aira-2",
-    name: "Sunscreen Aira Klinik SPF 50",
-    category: "Kosmetik",
-    stock: 15,
-    price: 120000,
-    active: true,
-  },
-  {
-    id: "aira-3",
-    name: "Lip Balm Aira Klinik",
-    category: "Kosmetik",
-    stock: 30,
-    price: 80000,
-    active: false,
-  },
-];
+import React, { useState, useEffect } from "react";
+import { supabase } from "../supabase"; // Pastikan path ini benar sesuai lokasi supabase.js
 
 function formatCurrency(num) {
   return new Intl.NumberFormat("id-ID", {
@@ -35,7 +9,7 @@ function formatCurrency(num) {
 }
 
 export default function ProductManagement() {
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -44,6 +18,30 @@ export default function ProductManagement() {
     price: "",
     active: true,
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fungsi untuk mengambil data produk dari Supabase
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.from("product").select("*");
+      if (error) {
+        throw error;
+      }
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error.message);
+      setError("Gagal memuat produk. Silakan coba lagi.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Panggil fetchProducts saat komponen pertama kali di-mount
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -53,25 +51,52 @@ export default function ProductManagement() {
     }));
   };
 
-  const handleAddProduct = () => {
+  const handleAddProduct = async () => {
     if (!formData.name || !formData.category || !formData.stock || !formData.price) {
       alert("Semua kolom harus diisi");
       return;
     }
-    const newProduct = {
-      ...formData,
-      id: `aira-${products.length + 1}`, // ID dengan prefix "aira-"
-      stock: parseInt(formData.stock),
-      price: parseFloat(formData.price),
-    };
-    setProducts([...products, newProduct]);
-    setFormData({ name: "", category: "", stock: "", price: "", active: true });
-    setShowForm(false);
+
+    try {
+      const newProduct = {
+        name: formData.name,
+        category: formData.category,
+        stock: parseInt(formData.stock),
+        price: parseFloat(formData.price),
+        active: formData.active,
+      };
+
+      const { data, error } = await supabase.from("product").insert([newProduct]).select();
+
+      if (error) {
+        throw error;
+      }
+
+      setProducts([...products, ...data]); // Tambahkan produk baru ke state
+      setFormData({ name: "", category: "", stock: "", price: "", active: true });
+      setShowForm(false);
+      alert("Produk berhasil ditambahkan!");
+    } catch (error) {
+      console.error("Error adding product:", error.message);
+      alert("Gagal menambahkan produk: " + error.message);
+    }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Yakin ingin menghapus produk ini?")) {
-      setProducts(products.filter((p) => p.id !== id));
+      try {
+        const { error } = await supabase.from("product").delete().eq("id", id);
+
+        if (error) {
+          throw error;
+        }
+
+        setProducts(products.filter((p) => p.id !== id));
+        alert("Produk berhasil dihapus!");
+      } catch (error) {
+        console.error("Error deleting product:", error.message);
+        alert("Gagal menghapus produk: " + error.message);
+      }
     }
   };
 
@@ -154,62 +179,68 @@ export default function ProductManagement() {
         </div>
       )}
 
-      <div className="overflow-x-auto bg-white shadow rounded">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Stok</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Harga</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Status</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Aksi</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {products.map((product) => (
-              <tr key={product.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4">{product.name}</td>
-                <td className="px-6 py-4">{product.category}</td>
-                <td className="px-6 py-4 text-right">{product.stock}</td>
-                <td className="px-6 py-4 text-right">{formatCurrency(product.price)}</td>
-                <td className="px-6 py-4 text-center">
-                  {product.active ? (
-                    <span className="inline-block px-2 py-1 text-xs text-green-800 bg-green-100 rounded">
-                      Aktif
-                    </span>
-                  ) : (
-                    <span className="inline-block px-2 py-1 text-xs text-gray-600 bg-gray-200 rounded">
-                      Nonaktif
-                    </span>
-                  )}
-                </td>
-                <td className="px-6 py-4 text-center space-x-2">
-                  <button
-                    className="text-indigo-600 hover:text-indigo-900"
-                    onClick={() => alert("Fitur Edit belum tersedia")}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="text-red-600 hover:text-red-900"
-                    onClick={() => handleDelete(product.id)}
-                  >
-                    Hapus
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {products.length === 0 && (
+      {loading ? (
+        <p className="text-center text-gray-600">Memuat produk...</p>
+      ) : error ? (
+        <p className="text-center text-red-600">{error}</p>
+      ) : (
+        <div className="overflow-x-auto bg-white shadow rounded">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
               <tr>
-                <td colSpan="6" className="text-center py-4 text-gray-500">
-                  Tidak ada produk tersedia.
-                </td>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Stok</th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Harga</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Status</th>
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Aksi</th>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {products.map((product) => (
+                <tr key={product.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4">{product.name}</td>
+                  <td className="px-6 py-4">{product.category}</td>
+                  <td className="px-6 py-4 text-right">{product.stock}</td>
+                  <td className="px-6 py-4 text-right">{formatCurrency(product.price)}</td>
+                  <td className="px-6 py-4 text-center">
+                    {product.active ? (
+                      <span className="inline-block px-2 py-1 text-xs text-green-800 bg-green-100 rounded">
+                        Aktif
+                      </span>
+                    ) : (
+                      <span className="inline-block px-2 py-1 text-xs text-gray-600 bg-gray-200 rounded">
+                        Nonaktif
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-center space-x-2">
+                    <button
+                      className="text-indigo-600 hover:text-indigo-900"
+                      onClick={() => alert("Fitur Edit belum tersedia")}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="text-red-600 hover:text-red-900"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {products.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="text-center py-4 text-gray-500">
+                    Tidak ada produk tersedia.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
