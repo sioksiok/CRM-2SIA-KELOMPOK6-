@@ -2,34 +2,25 @@ import {
   LayoutDashboard,
   Users,
   Box,
+  BarChart2,
   Settings,
   User,
   LogIn,
   UserPlus,
   ShoppingBagIcon,
+  Gift,
 } from 'lucide-react'
 import { FaHistory, FaNotesMedical } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
-  { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
-  { name: 'Produk', icon: <Box />, path: '/produk' },
-  { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
-  { name: 'Daftar Kontak Pelanggan', icon: <User/>, path: '/customer' },
-  { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
-  { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
-  { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
-  { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
-  { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
-  { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
-  { name: 'User', icon: <FaNotesMedical />, path: '/user' },
-  { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   {
     group: 'MENU UTAMA',
     items: [
       { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
       { name: 'Produk', icon: <Box />, path: '/produk' },
-      { name: 'Promo Member', icon: <Users />, path: '/promo-member' },
+      { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
+      { name: 'Promo Member', icon: <Gift />, path: '/promo-member' },
       { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
     ],
   },
