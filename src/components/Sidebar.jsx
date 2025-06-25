@@ -1,18 +1,18 @@
 import {
   LayoutDashboard,
-  Users,         // untuk pelanggan
-  ShoppingCart,  // untuk penjualan
-  Box,           // untuk produk
-  BarChart2,     // untuk laporan
-  Settings,      // untuk pengaturan akun
+  Users,
+  Box,
+  Settings,
   User,
   LogIn,
   UserPlus,
-  Gift,
+  ShoppingBagIcon,
 } from 'lucide-react'
+import { FaHistory, FaNotesMedical } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
+<<<<<<< HEAD
   { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
   { name: 'Produk', icon: <Box />, path: '/produk' },
   { name: 'Laporan', icon: <BarChart2 />, path: '/laporan' },
@@ -25,6 +25,34 @@ const menuItems = [
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'User', icon: <FaNotesMedical />, path: '/user' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+=======
+  {
+    group: 'MENU UTAMA',
+    items: [
+      { name: 'Dashboard', icon: <LayoutDashboard />, path: '/' },
+      { name: 'Produk', icon: <Box />, path: '/produk' },
+      { name: 'Promo Member', icon: <Users />, path: '/promo-member' },
+      { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
+    ],
+  },
+  {
+    group: 'PELANGGAN',
+    items: [
+      { name: 'Daftar Kontak Pelanggan', icon: <User />, path: '/customer' },
+      { name: 'Kelola Promo Pelanggan', icon: <User />, path: '/manage-promo-admin' },
+      { name: 'Aktivitas Pelanggan', icon: <Users />, path: '/aktivitas-pelanggan' },
+      { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
+    ],
+  },
+  {
+    group: 'LAINNYA',
+    items: [
+      { name: 'Rekam Medis', icon: <FaNotesMedical />, path: '/rekam-medis' },
+      { name: 'User Management', icon: <User />, path: '/user' },
+      { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+    ],
+  },
+>>>>>>> 4255c1a68bcf082693e6d95b5ed213827874922c
 ]
 
 const accountItems = [
@@ -35,39 +63,50 @@ const accountItems = [
 
 const Sidebar = () => {
   const location = useLocation()
-
   const isActive = (path) => location.pathname === path
 
   return (
-    <aside className="bg-white w-64 h-screen shadow-lg px-4 py-6 hidden md:block">
-      <div className="text-xl font-bold mb-8 text-purple-700">UMKM CRM</div>
-      <nav className="space-y-1">
-        {menuItems.map((item) => (
-          <Link
-            key={item.name}
-            to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-purple-100 transition ${
-              isActive(item.path)
-                ? 'bg-purple-200 text-purple-800 font-semibold'
-                : 'text-gray-700'
-            }`}
-          >
-            <span className="w-5 h-5">{item.icon}</span>
-            {item.name}
-          </Link>
+    <aside className="bg-[#F9F3F3] w-64 h-screen shadow-lg px-4 py-6 hidden md:block">
+      <div className="text-2xl font-bold mb-8 text-[#800000] text-center">
+        UMKM CRM
+      </div>
+
+      <nav className="space-y-6">
+        {menuItems.map((section) => (
+          <div key={section.group}>
+            <div className="text-sm font-bold text-[#800000] mb-2 px-2">
+              {section.group}
+            </div>
+            <div className="space-y-1">
+              {section.items.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition ${
+                    isActive(item.path)
+                      ? 'bg-[#EBDADA] text-[#800000] font-semibold'
+                      : 'text-[#800000] hover:bg-[#EBDADA]'
+                  }`}
+                >
+                  <span className="w-5 h-5">{item.icon}</span>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
         ))}
       </nav>
 
-      <div className="mt-8 text-xs font-semibold text-gray-500">AKUN</div>
+      <div className="mt-10 text-sm font-bold text-[#800000] px-2">AKUN</div>
       <nav className="mt-2 space-y-1">
         {accountItems.map((item) => (
           <Link
             key={item.name}
             to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-purple-100 transition ${
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg transition ${
               isActive(item.path)
-                ? 'bg-purple-200 text-purple-800 font-semibold'
-                : 'text-gray-700'
+                ? 'bg-[#EBDADA] text-[#800000] font-semibold'
+                : 'text-[#800000] hover:bg-[#EBDADA]'
             }`}
           >
             <span className="w-5 h-5">{item.icon}</span>
@@ -80,4 +119,3 @@ const Sidebar = () => {
 }
 
 export default Sidebar
-

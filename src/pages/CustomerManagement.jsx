@@ -94,7 +94,9 @@ export default function CustomerManagement() {
               id="activeCheckbox"
               className="mr-2"
             />
-            <label htmlFor="activeCheckbox" className="font-semibold text-[#800000]">Aktif</label>
+            <label htmlFor="activeCheckbox" className="font-semibold text-[#800000]">
+              Aktif
+            </label>
           </div>
           <button
             onClick={handleAddCustomer}

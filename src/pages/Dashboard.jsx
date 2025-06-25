@@ -1,104 +1,142 @@
 import React from 'react'
+import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
-  LineElement,
   PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js'
-import { Bar, Line } from 'react-chartjs-2'
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
-  LineElement,
   PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend
 )
 
 const Dashboard = () => {
-  // Data summary cards
-  const stats = [
-    { label: "Pendapatan Hari Ini", value: "$53,000", percent: "+55%", color: "green" },
-    { label: "Pengguna Hari Ini", value: "2,300", percent: "+3%", color: "blue" },
-    { label: "Klien Baru", value: "+3,462", percent: "-2%", color: "red" },
-    { label: "Penjualan", value: "$103,430", percent: "+5%", color: "purple" },
+  const annualRevenueData = {
+    labels: ["2019", "2020", "2021", "2022", "2023", "2024"],
+    datasets: [
+      {
+        label: "Pendapatan Tahunan (dalam juta)",
+        data: [120, 150, 170, 210, 240, 280],
+        borderColor: '#800000',
+        backgroundColor: '#800000',
+        tension: 0.4,
+      },
+    ],
+  }
+
+  const monthlyRevenueData = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+    datasets: [
+      {
+        label: "Pendapatan Bulanan (2024)",
+        data: [18, 22, 20, 25, 27, 30],
+        borderColor: '784040',
+        backgroundColor: '784040',
+        tension: 0.4,
+      },
+    ],
+  }
+
+  const services = [
+    { name: 'Facial Glow', revenue: 'Rp 12.000.000', growth: '+15%', kategori: 'Perawatan Wajah' },
+    { name: 'Laser Treatment', revenue: 'Rp 9.500.000', growth: '+8%', kategori: 'Perawatan Kulit' },
+    { name: 'Botox Injection', revenue: 'Rp 7.800.000', growth: '+10%', kategori: 'Anti-Aging' },
   ]
 
-  // Data untuk grafik Penjualan Bulanan (Bar Chart)
-  const barData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-    datasets: [
-      {
-        label: "Penjualan (dalam ribuan $)",
-        data: [12, 19, 14, 17, 22, 30, 28, 26, 32, 35, 40, 45],
-        backgroundColor: "rgba(99, 102, 241, 0.7)", // purple-600
-      },
-    ],
-  }
-
-  const barOptions = {
-    responsive: true,
-    plugins: {
-      legend: { position: 'top' },
-      title: { display: true, text: 'Penjualan Bulanan Tahun Ini' },
-    },
-  }
-
-  // Data untuk grafik Pertumbuhan Pelanggan (Line Chart)
-  const lineData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-    datasets: [
-      {
-        label: "Jumlah Pelanggan",
-        data: [50, 75, 120, 180, 220, 260, 300, 350, 400, 430, 460, 500],
-        borderColor: "rgba(59, 130, 246, 1)", // blue-500
-        backgroundColor: "rgba(59, 130, 246, 0.3)",
-        fill: true,
-        tension: 0.3,
-        pointRadius: 4,
-      },
-    ],
-  }
-
-  const lineOptions = {
-    responsive: true,
-    plugins: {
-      legend: { position: 'top' },
-      title: { display: true, text: 'Pertumbuhan Pelanggan Tahun Ini' },
-    },
-  }
+  const serviceTrends = [
+    { no: '01.', name: 'Acne Treatment', price: 'Rp 350.000', return: '+12%' },
+    { no: '02.', name: 'Chemical Peeling', price: 'Rp 500.000', return: '+9%' },
+    { no: '03.', name: 'Microneedling', price: 'Rp 700.000', return: '+6%' },
+    { no: '04.', name: 'Hair Removal Laser', price: 'Rp 800.000', return: '+5%' },
+    { no: '05.', name: 'Anti Aging', price: 'Rp 1.200.000', return: '+11%' },
+  ]
 
   return (
-    <div className="p-6 space-y-8">
-      {/* Statistik utama */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map(({ label, value, percent, color }) => (
-          <div key={label} className="bg-white rounded-xl shadow p-5">
-            <p className="text-sm text-gray-500">{label}</p>
-            <h2 className={`text-2xl font-bold text-${color}-600 flex items-center gap-2`}>
-              {value}
-              <span className={`text-xs font-semibold text-${color}-500`}>{percent}</span>
-            </h2>
+    <div className="p-6 bg-[#800000] min-h-screen">
+      {/* Header Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-white rounded-xl p-4 shadow text-center">
+          <p className="text-sm text-gray-600">Total Pendapatan</p>
+          <h2 className="text-2xl font-bold">Rp 280.000.000</h2>
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow text-center">
+          <p className="text-sm text-gray-600">Jumlah Layanan Aktif</p>
+          <h2 className="text-2xl font-bold">32 Layanan</h2>
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow text-center">
+          <p className="text-sm text-gray-600">Tingkat Kepuasan</p>
+          <h2 className="text-2xl font-bold text-green-600">98%</h2>
+        </div>
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="bg-white rounded-xl p-4 shadow">
+          <Line data={annualRevenueData} options={{ responsive: true }} />
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow">
+          <Line data={monthlyRevenueData} options={{ responsive: true }} />
+        </div>
+      </div>
+
+      {/* Services and Trends */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 className="font-semibold mb-4">Layanan Terlaris</h3>
+          {services.map((svc) => (
+            <div key={svc.name} className="bg-white rounded-xl p-4 mb-3 shadow">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h4 className="font-bold text-lg">{svc.name}</h4>
+                  <p className="text-sm text-gray-500">{svc.kategori}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-bold">{svc.revenue}</p>
+                  <p className={svc.growth.includes('-') ? 'text-red-500' : 'text-green-600'}>
+                    {svc.growth}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <h3 className="font-semibold mb-4">Trend Layanan Populer</h3>
+          <div className="bg-white rounded-xl shadow overflow-hidden">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-gray-100 text-gray-600">
+                <tr>
+                  <th className="p-3">No</th>
+                  <th className="p-3">Nama</th>
+                  <th className="p-3">Harga</th>
+                  <th className="p-3">Pertumbuhan</th>
+                </tr>
+              </thead>
+              <tbody>
+                {serviceTrends.map((item) => (
+                  <tr key={item.name} className="border-t">
+                    <td className="p-3">{item.no}</td>
+                    <td className="p-3">{item.name}</td>
+                    <td className="p-3">{item.price}</td>
+                    <td className={`p-3 ${item.return.includes('-') ? 'text-red-500' : 'text-green-600'}`}>{item.return}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ))}
-      </div>
-
-      {/* Grafik Penjualan Bulanan */}
-      <div className="bg-white rounded-xl shadow p-6">
-        <Bar options={barOptions} data={barData} />
-      </div>
-
-      {/* Grafik Pertumbuhan Pelanggan */}
-      <div className="bg-white rounded-xl shadow p-6">
-        <Line options={lineOptions} data={lineData} />
+        </div>
       </div>
     </div>
   )
