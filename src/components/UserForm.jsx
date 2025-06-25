@@ -50,10 +50,4 @@ const UserForm = ({ addUser, updateUser, editingUser }) => {
 };
 
 export default UserForm;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> KELOMPOK6/putri
-=======
->>>>>>> KELOMPOK6/adelin
