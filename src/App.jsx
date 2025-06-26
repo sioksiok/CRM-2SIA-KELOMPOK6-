@@ -23,6 +23,7 @@ import DashboardUser from "./pages/DashboardUser";
 // Halaman Autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ForYou from "./pages/ForYou";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <Route element={<LayoutUser />}>
         <Route path="/dashboard-user" element={<DashboardUser />} />
         <Route path="/promo-member" element={<PromoMember />} />
+        <Route path="/foryou" element={<ForYou />} />
       </Route>
 
       {/* Halaman Autentikasi */}
