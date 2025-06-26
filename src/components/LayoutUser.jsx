@@ -1,28 +1,21 @@
-import { Navigate } from 'react-router-dom';
-import SidebarUser from '../components/SidebarUser';
-import Header from '../components/Header';
+// src/components/LayoutUser.jsx
+import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { User as UserIcon } from 'lucide-react';
+
+import SidebarUser from './SidebarUser';
 
 const LayoutUser = () => {
-  const storedUser = localStorage.getItem('user');
-  const user = storedUser ? JSON.parse(storedUser) : null;
-
-  // Validasi login & role
-  if (!user) return <Navigate to="/signin" />;
-  if (user.role !== 'User') return <Navigate to="/" />;
-
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar khusus user */}
+    <div className="flex min-h-screen bg-lightgray">
       <SidebarUser />
 
-      {/* Area Konten */}
-      <div className="flex-1 flex flex-col">
-        {/* Header Global */}
-        <Header email={user.email} />
+      <div className="flex-grow pl-64">
+        <header className="py-4 px-8 flex justify-end items-center bg-softwhite shadow-sm">
+          <UserIcon className="w-7 h-7 text-maroon cursor-pointer hover:text-maroon-light transition-colors" />
+        </header>
 
-        {/* Halaman Dinamis */}
-        <main className="flex-1 p-6">
+        <main className="p-8">
           <Outlet />
         </main>
       </div>

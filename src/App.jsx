@@ -25,6 +25,7 @@ import FeedbackUser from "./pages/feedbackUser";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForYou from "./pages/ForYou";
+import FeedbackUser from "./pages/feedbackUser";
 
 function App() {
   return (
@@ -49,7 +50,8 @@ function App() {
         <Route path="/dashboard-user" element={<DashboardUser />} />
         <Route path="/promo-member" element={<PromoMember />} />
         <Route path="/foryou" element={<ForYou />} />
-        <Route path="/feedback" element={<FeedbackUser />} /> 
+        <Route path="/feedback" element={<FeedbackUser />} />
+      
       </Route>
 
       {/* Halaman Autentikasi */}
