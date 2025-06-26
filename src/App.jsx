@@ -19,12 +19,14 @@ import User from "./pages/User"; // Diperbarui: Menggunakan './pages/User'
 // Halaman autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import DashboardUser from "./pages/DashboardUser";
 
 function App() {
   return (
     <Routes>
       {/* Routes dengan layout utama */}
       <Route element={<MainLayout />}>
+        <Route path="/dashboard-user" element={<DashboardUser />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/customer" element={<CustomerManagement />} />
         <Route path="/penjualan" element={<SalesManagement />} />
