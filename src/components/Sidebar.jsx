@@ -21,7 +21,7 @@ const menuItems = [
   { name: 'Kelola Promo Pelanggan', icon: <Gift />, path: '/manage-promo-admin' }, // Changed icon to Gift based on image context (Promo)
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
-  { name: 'Dashboard User', icon: <FaHistory />, path: '/dashboard-user' },
+  { name: 'Dashboard User', icon: <LayoutDashboard />, path: '/dashboard-user' },
 ]
 
 const Sidebar = () => {
