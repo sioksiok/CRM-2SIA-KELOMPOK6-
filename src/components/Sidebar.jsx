@@ -32,6 +32,7 @@ const Sidebar = () => {
     <aside className="bg-[#F9F3F3] w-64 h-screen shadow-lg px-4 py-6 hidden md:block">
       <div className="flex items-center gap-2 mb-8 ml-2"> {/* Added flex and gap for icon and text */}
         <img src="/public/logoaira.png" alt="Aira Clinic Logo" className="w-12 h-12" /> {/* Placeholder for logo */}
+        <img src="/public/logoaira.png" alt="Aira Clinic Logo" className="w-10 h-10" /> {/* Placeholder for logo */}
         <div className="text-2xl font-bold text-[#800000]">
           Aira Skin Clinic
         </div>
