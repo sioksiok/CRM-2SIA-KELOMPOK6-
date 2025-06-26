@@ -12,11 +12,11 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 
 const menuItems = [
-  { name: 'dashboard-user', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
-  { name: 'PromoMember', icon: <Megaphone />, path: '/promo-member' }, // Ikon megafon untuk Promo
+  { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
   { name: 'For You', icon: <Heart />, path: '/for-you' }, // Ikon hati untuk For You
   { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' }, // Ikon pesan/awan untuk Feedback
-  { name: 'FAQ', icon: <MessageCircleQuestion />, path: '/faq' }, // Ikon pertanyaan untuk FAQ
+  { name: 'FAQ', icon: <MessageCircleQuestion />, path: '/faq' },
+  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, // Ikon pertanyaan untuk FAQ
   // Item menu lain yang tidak ada di gambar dihapus
 ];
 

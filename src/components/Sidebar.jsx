@@ -22,7 +22,6 @@ const menuItems = [
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   { name: 'Dashboard User', icon: <LayoutDashboard />, path: '/dashboard-user' },
-  { name: 'Promo Member', icon: <LayoutDashboard />, path: '/promo-member' },
 ]
 
 const Sidebar = () => {

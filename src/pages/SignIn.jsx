@@ -1,13 +1,33 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // untuk redirect
 
 const SignIn = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // hook untuk pindah halaman
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    alert(`Login dengan email: ${email}`)
-  }
+    e.preventDefault();
+
+    // --- Data login sementara (hardcoded) ---
+    const adminEmail = 'adel@gmail.com';
+    const adminPassword = 'adel';
+
+    const userEmail = 'ginta@gmail.com';
+    const userPassword = 'ginta';
+    // --- END ---
+
+    if (email === adminEmail && password === adminPassword) {
+      // Simpan info login ke localStorage
+      localStorage.setItem('user', JSON.stringify({ role: 'Admin', email }));
+      navigate('/'); // redirect ke dashboard admin
+    } else if (email === userEmail && password === userPassword) {
+      localStorage.setItem('user', JSON.stringify({ role: 'User', email }));
+      navigate('/dashboard-user'); // redirect ke dashboard user
+    } else {
+      alert('Email atau password salah. Silakan coba lagi.');
+    }
+  };
 
   return (
     <div
@@ -15,7 +35,7 @@ const SignIn = () => {
       style={{ backgroundColor: '#800000' }}
     >
       <div
-        className="max-w-md w-full rounded-3xl overflow-hidden shadow-xl transform transition duration-300"
+        className="max-w-md w-full rounded-3xl overflow-hidden shadow-xl transition duration-300"
         style={{
           backgroundColor: '#f9eaea',
           border: '2px solid #800000',
@@ -102,7 +122,7 @@ const SignIn = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
