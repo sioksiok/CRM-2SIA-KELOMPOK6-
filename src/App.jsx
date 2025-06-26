@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom"; // ✅ Penting!
 import MainLayout from "./components/MainLayout";
-import LayoutUser from "./components/LayoutUser"; // tambahkan ini
+import LayoutUser from "./components/LayoutUser";
 
-// Halaman-halaman utama
+// Halaman Admin
 import Dashboard from "./pages/Dashboard";
 import CustomerManagement from "./pages/CustomerManagement";
 import SalesManagement from "./pages/SalesManagement";
@@ -17,17 +17,19 @@ import PemesananLayanan from "./pages/PemesananLayananProduk";
 import PusatBantuan from "./pages/PusatBantuan";
 import User from "./pages/User";
 
-// Halaman autentikasi
+// Halaman User
+import DashboardUser from "./pages/DashboardUser";
+
+// Halaman Autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import DashboardUser from "./pages/DashboardUser";
 
 function App() {
   return (
     <Routes>
       {/* Layout Admin */}
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/customer" element={<CustomerManagement />} />
         <Route path="/penjualan" element={<SalesManagement />} />
         <Route path="/produk" element={<ProductManagement />} />
@@ -46,9 +48,12 @@ function App() {
         <Route path="/promo-member" element={<PromoMember />} />
       </Route>
 
-      {/* Routes tanpa layout */}
+      {/* Halaman Autentikasi */}
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
+
+      {/* Redirect jika tidak ditemukan */}
+      <Route path="*" element={<Navigate to="/signin" />} />
     </Routes>
   );
 }

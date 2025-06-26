@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // untuk redirect
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // hook untuk pindah halaman
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,24 +18,19 @@ const SignIn = () => {
     // --- END ---
 
     if (email === adminEmail && password === adminPassword) {
-      // Simpan info login ke localStorage
       localStorage.setItem('user', JSON.stringify({ role: 'Admin', email }));
-      navigate('/'); // redirect ke dashboard admin
+      navigate('/dashboard'); // ke halaman dashboard admin
     } else if (email === userEmail && password === userPassword) {
       localStorage.setItem('user', JSON.stringify({ role: 'User', email }));
-      navigate('/dashboard-user'); // redirect ke dashboard user
+      navigate('/dashboard-user'); // ke halaman dashboard user
     } else {
       alert('Email atau password salah. Silakan coba lagi.');
     }
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-6"
-      style={{ backgroundColor: '#800000' }}
-    >
-      <div
-        className="max-w-md w-full rounded-3xl overflow-hidden shadow-xl transition duration-300"
+    <div className="min-h-screen flex items-center justify-center p-6" style={{ backgroundColor: '#800000' }}>
+      <div className="max-w-md w-full rounded-3xl overflow-hidden shadow-xl transition duration-300"
         style={{
           backgroundColor: '#f9eaea',
           border: '2px solid #800000',
@@ -43,10 +38,7 @@ const SignIn = () => {
         }}
       >
         <div className="p-6">
-          <h2
-            className="text-3xl font-extrabold text-center mb-2"
-            style={{ color: '#800000' }}
-          >
+          <h2 className="text-3xl font-extrabold text-center mb-2" style={{ color: '#800000' }}>
             Selamat Datang
           </h2>
           <p className="text-center text-sm mb-6" style={{ color: '#aa3333' }}>
@@ -98,12 +90,8 @@ const SignIn = () => {
               style={{
                 backgroundColor: '#800000',
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = '#990000')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = '#800000')
-              }
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#990000')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#800000')}
             >
               Masuk
             </button>
@@ -111,11 +99,7 @@ const SignIn = () => {
 
           <p className="text-center text-sm mt-4 text-gray-700">
             Belum punya akun?{' '}
-            <a
-              href="/signup"
-              className="font-semibold hover:underline"
-              style={{ color: '#800000' }}
-            >
+            <a href="/signup" className="font-semibold hover:underline" style={{ color: '#800000' }}>
               Daftar di sini
             </a>
           </p>
