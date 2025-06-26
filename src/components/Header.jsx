@@ -1,4 +1,5 @@
-import { Search, User } from 'lucide-react'
+import { Search, User, LogIn } from 'lucide-react' // Menambahkan LogIn
+import { Link } from 'react-router-dom' // Import Link dari react-router-dom
 
 const Header = () => {
   return (
@@ -15,10 +16,11 @@ const Header = () => {
           />
           <Search className="absolute left-3 top-2.5 w-4 h-4 text-[#800000]" />
         </div>
-        <div className="flex items-center gap-2 text-sm cursor-pointer text-[#800000] hover:text-red-700">
-          <User className="w-4 h-4" />
+        {/* Menggunakan komponen Link untuk navigasi */}
+        <Link to="/signin" className="flex items-center gap-2 text-sm cursor-pointer text-[#800000] hover:text-red-700">
+          <User className="w-4 h-4" /> {/* Ikon User sesuai gambar */}
           Sign In
-        </div>
+        </Link>
       </div>
     </header>
   )
