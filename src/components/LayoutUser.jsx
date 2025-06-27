@@ -1,23 +1,18 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { User as UserIcon } from 'lucide-react';
 
 import SidebarUser from './SidebarUser';
+import Header from './Header'; // ✅ dipanggil di sini
 
 const LayoutUser = () => {
   return (
     <div className="flex min-h-screen bg-lightgray">
-      {/* Sidebar dengan lebar tetap */}
       <div className="w-64">
         <SidebarUser />
       </div>
 
-      {/* Konten utama tanpa padding kiri */}
       <div className="flex-grow">
-        <header className="py-4 px-8 flex justify-end items-center bg-softwhite shadow-sm">
-          <UserIcon className="w-7 h-7 text-maroon cursor-pointer hover:text-maroon-light transition-colors" />
-        </header>
-
+        <Header /> {/* ✅ digunakan di sini */}
         <main className="p-8">
           <Outlet />
         </main>
