@@ -39,7 +39,6 @@ function App() {
         <Route path="/produk" element={<ProductManagement />} />
         <Route path="/cek-status-member" element={<CekStatusMember />} />
         <Route path="/rekam-medis" element={<RekamMedis />} />
-        <Route path="/pusat-bantuan" element={<PusatBantuan />} />
         <Route path="/pemesanan-layanan-produk" element={<PemesananLayanan />} />
         <Route path="/akun" element={<Akun />} />
         <Route path="/manage-promo-admin" element={<ManagePromoAdmin />} />
@@ -52,6 +51,7 @@ function App() {
         <Route path="/promo-member" element={<PromoMember />} />
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/feedback" element={<FeedbackUser />} />
+        <Route path="/pusat-bantuan" element={<PusatBantuan />} />
       </Route>
 
       {/* Halaman Autentikasi */}

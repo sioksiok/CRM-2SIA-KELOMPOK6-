@@ -7,6 +7,7 @@ import {
   // Hapus ikon yang tidak terpakai dari sini:
   // LayoutDashboard, Users, Box, BarChart2, Settings, User, LogIn, UserPlus, ShoppingBagIcon, Gift
 } from 'lucide-react';
+import { FaHistory } from 'react-icons/fa';
 // Hapus import dari react-icons/fa jika tidak ada ikon Fa yang digunakan lagi:
 // import { FaHistory, FaNotesMedical } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
@@ -15,8 +16,8 @@ const menuItems = [
   { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
   { name: 'For You', icon: <Heart />, path: '/foryou' }, // Ikon hati untuk For You
   { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' }, // Ikon pesan/awan untuk Feedback
-  { name: 'FAQ', icon: <MessageCircleQuestion />, path: '/faq' },
-  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, // Ikon pertanyaan untuk FAQ
+  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, 
+  { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   // Item menu lain yang tidak ada di gambar dihapus
 ];
 
