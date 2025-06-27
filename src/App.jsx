@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom"; 
+import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import LayoutUser from "./components/LayoutUser";
 
@@ -19,13 +19,14 @@ import User from "./pages/User";
 
 // Halaman User
 import DashboardUser from "./pages/DashboardUser";
-import FeedbackUser from "./pages/feedbackUser";
+// PENTING: Pastikan nama file Anda di disk adalah FeedbackUser.jsx (dengan F besar)
+// Jika tidak, Anda harus mengubah nama file atau mempertahankan 'feedbackUser' di path.
+import FeedbackUser from "./pages/feedbackUser"; // <-- PATH DISESUAIKAN UNTUK NAMA FILE 'FeedbackUser.jsx'
 
 // Halaman Autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForYou from "./pages/ForYou";
-import FeedbackUser from "./pages/feedbackUser";
 
 function App() {
   return (
@@ -51,7 +52,6 @@ function App() {
         <Route path="/promo-member" element={<PromoMember />} />
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/feedback" element={<FeedbackUser />} />
-      
       </Route>
 
       {/* Halaman Autentikasi */}

@@ -1,4 +1,3 @@
-// src/pages/FeedbackUser.jsx
 
 import React from 'react';
 import { ArrowLeft, ArrowRight, User as UserIcon } from 'lucide-react';
