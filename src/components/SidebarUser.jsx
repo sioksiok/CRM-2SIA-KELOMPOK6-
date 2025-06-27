@@ -11,6 +11,7 @@ import { FaHistory } from 'react-icons/fa';
 // Hapus import dari react-icons/fa jika tidak ada ikon Fa yang digunakan lagi:
 // import { FaHistory, FaNotesMedical } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import PromoNonMember from '../pages/PromoUmum';
 
 const menuItems = [
   { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
@@ -18,7 +19,7 @@ const menuItems = [
   { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' }, // Ikon pesan/awan untuk Feedback
   { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' },
   // Tambahkan item menu untuk Promo Non Member di sini:
-  { name: 'Promo Non Member', icon: <Megaphone/>, path: '/promo-non-member' }, // Menggunakan ikon Megaphone yang sama
+  { name: 'Promo Umum', icon: <PromoNonMember/>, path: '/Promo Umum' }, // Menggunakan ikon Megaphone yang sama
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   // Item menu lain yang tidak ada di gambar dihapus
 ];
