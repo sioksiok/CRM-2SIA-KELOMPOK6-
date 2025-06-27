@@ -11,7 +11,7 @@ import { FaHistory } from 'react-icons/fa';
 // Hapus import dari react-icons/fa jika tidak ada ikon Fa yang digunakan lagi:
 // import { FaHistory, FaNotesMedical } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
-import PromoNonMember from '../pages/PromoUmum';
+import PromoNonMember from '../pages/PromoNonMemberember';
 
 const menuItems = [
   { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
