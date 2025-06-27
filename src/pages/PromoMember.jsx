@@ -1,5 +1,6 @@
 import React from "react";
 
+// ✅ Data promo didefinisikan di atas
 const promoMember = [
   {
     id: 1,
@@ -47,81 +48,91 @@ const promoMember = [
   },
 ];
 
+// ✅ Komponen utama
 export default function PromoMember() {
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-20">
-      <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
-        Our Special Offers for Members
-      </h1>
-      <p className="text-center text-gray-600 text-sm sm:text-base max-w-3xl mx-auto mb-12">
-        Unlock exclusive beauty experiences with our limited-time promotions.
-        Discover your path to radiant confidence. Explore now.
-      </p>
+    <div className="relative">
+      {/* Background foto dengan opacity 70% */}
+      <div
+        className="absolute inset-0 bg-center bg-cover opacity-70"
+        style={{ backgroundImage: "url('/treatment1.jpg')" }}
+      ></div>
 
-      <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
-        {/* Kolom Kiri: 3 Card vertikal */}
-        <div className="flex flex-col space-y-6">
-          {promoMember.slice(0, 3).map((promo) => (
-            <div
-              key={promo.id}
-              className="bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex"
-            >
-              <img
-                src={promo.gambar}
-                alt={promo.judul}
-                className="w-1/3 object-cover h-full"
-              />
-              <div className="p-4 flex flex-col justify-between">
-                <div>
-                  <h2 className="text-md font-semibold text-gray-800 mb-1">
-                    {promo.judul}
-                  </h2>
-                  <p className="text-sm text-gray-600 mb-1">
-                    {promo.deskripsi}
-                  </p>
-                </div>
-                <div className="mt-2">
-                  <p className="text-xs text-indigo-600 font-medium mb-1">
-                    Member Level: {promo.kategoriMember}
-                  </p>
-                  <p className="text-sm text-gray-500 line-through">
-                    Rp {promo.hargaAwal.toLocaleString("id-ID")}
-                  </p>
-                  <p className="text-base text-pink-600 font-bold">
-                    Rp {promo.hargaPromo.toLocaleString("id-ID")}
-                  </p>
+      {/* Konten utama */}
+      <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
+        <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
+          Our Special Offers for Members
+        </h1>
+        <p className="text-center text-gray-600 text-sm sm:text-base max-w-3xl mx-auto mb-12">
+          Unlock exclusive beauty experiences with our limited-time promotions.
+          Discover your path to radiant confidence. Explore now.
+        </p>
+
+        <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
+          {/* Kolom Kiri */}
+          <div className="flex flex-col space-y-6">
+            {promoMember.slice(0, 3).map((promo) => (
+              <div
+                key={promo.id}
+                className="bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex"
+              >
+                <img
+                  src={promo.gambar}
+                  alt={promo.judul}
+                  className="w-1/3 object-cover h-full"
+                />
+                <div className="p-4 flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-md font-semibold text-gray-800 mb-1">
+                      {promo.judul}
+                    </h2>
+                    <p className="text-sm text-gray-600 mb-1">
+                      {promo.deskripsi}
+                    </p>
+                  </div>
+                  <div className="mt-2">
+                    <p className="text-xs text-indigo-600 font-medium mb-1">
+                      Member Level: {promo.kategoriMember}
+                    </p>
+                    <p className="text-sm text-gray-500 line-through">
+                      Rp {promo.hargaAwal.toLocaleString("id-ID")}
+                    </p>
+                    <p className="text-base text-pink-600 font-bold">
+                      Rp {promo.hargaPromo.toLocaleString("id-ID")}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Kolom Kanan: Card panjang */}
-        <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
-          <img
-            src={promoMember[3].gambar}
-            alt={promoMember[3].judul}
-            className="h-72 w-full object-cover"
-          />
-          <div className="p-6 flex flex-col justify-between h-full">
-            <div>
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                {promoMember[3].judul}
-              </h2>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                {promoMember[3].deskripsi}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm text-indigo-600 font-medium mb-1">
-                Member Level: {promoMember[3].kategoriMember}
-              </p>
-              <p className="text-sm text-gray-500 line-through">
-                Rp {promoMember[3].hargaAwal.toLocaleString("id-ID")}
-              </p>
-              <p className="text-lg text-pink-600 font-bold">
-                Rp {promoMember[3].hargaPromo.toLocaleString("id-ID")}
-              </p>
+          {/* Kolom Kanan */}
+          <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
+            <img
+              src={promoMember[3].gambar}
+              alt={promoMember[3].judul}
+              className="h-72 w-full object-cover"
+            />
+            <div className="p-6 flex flex-col justify-between h-full">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                  {promoMember[3].judul}
+                </h2>
+                <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                  {promoMember[3].deskripsi}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-indigo-600 font-medium mb-1">
+                  Member Level: {promoMember[3].kategoriMember}
+                </p>
+                <p className="text-sm text-gray-500 line-through">
+                  Rp {promoMember[3].hargaAwal.toLocaleString("id-ID")}
+                </p>
+                <p className="text-lg text-pink-600 font-bold">
+                  Rp {promoMember[3].hargaPromo.toLocaleString("id-ID")}
+                </p>
+              </div>
             </div>
           </div>
         </div>
