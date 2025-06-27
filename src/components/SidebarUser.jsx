@@ -12,7 +12,7 @@ const menuItems = [
   { name: 'For You', icon: <Heart />, path: '/foryou' },
   { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' },
   { name: 'Promo Member', icon: <Megaphone />, path: '/promo-member' },
-  { name: 'Promo Umum', icon: <Promotion />, path: '/promo-non-member' },
+  { name: 'Promo Umum', icon: <Megaphone/>, path: '/promo-non-member' },
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
 ];
 
