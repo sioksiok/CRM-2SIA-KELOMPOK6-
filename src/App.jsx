@@ -1,3 +1,4 @@
+// App.jsx (Tidak ada perubahan yang diperlukan pada kode ini)
 import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import LayoutUser from "./components/LayoutUser";
@@ -14,14 +15,14 @@ import ManagePromoAdmin from "./pages/ManagePromoAdmin";
 import AktivitasPelanggan from "./pages/AktivitasPelanggan";
 import PemesananLayanan from "./pages/PemesananLayananProduk";
 import PusatBantuan from "./pages/PusatBantuan"; // dipakai juga oleh user
-import User from "./pages/User";
+// import User from "./pages/User"; // Tidak ada rute untuk User di bawah ini, jika tidak dipakai, bisa dihapus
 
 // Halaman User
 import DashboardUser from "./pages/DashboardUser";
 import FeedbackUser from "./pages/feedbackUser";
 import PromoMember from "./pages/PromoMember";
 import ForYou from "./pages/ForYou";
-import PromoNonMember from "./pages/PromoNonMember"; // Akan kita tampilkan sebagai "Promo Umum"
+import PromoNonMember from "./pages/PromoNonMember"; // Sudah diimpor dengan benar
 
 // Halaman Autentikasi
 import SignIn from "./pages/SignIn";
@@ -48,17 +49,25 @@ function App() {
       <Route element={<LayoutUser />}>
         <Route path="/dashboard-user" element={<DashboardUser />} />
         <Route path="/promo-member" element={<PromoMember />} />
-        <Route path="/promo-umum" element={<PromoNonMember />} /> {/* Ubah dari /promo-non-member */}
+        {/* Rute untuk Promo Umum (yang merender PromoNonMember) */}
+        <Route path="/promo-umum" element={<PromoNonMember />} />
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/feedback" element={<FeedbackUser />} />
         <Route path="/pusat-bantuan" element={<PusatBantuan />} />
+        {/* Jika ada halaman User dari import di atas, tapi tidak ada rute di sini, bisa dihapus importnya */}
+        {/* <Route path="/user-profile" element={<User />} /> */}
       </Route>
 
       {/* Autentikasi */}
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
 
-      {/* Redirect jika path tidak ditemukan */}
+      {/* Rute Default/Root */}
+      {/* Ini adalah halaman yang akan muncul pertama kali atau jika URL tidak cocok */}
+      <Route path="/" element={<Navigate to="/signin" />} />
+
+      {/* Redirect jika path tidak ditemukan (Catch-all route) */}
+      {/* Pastikan tidak ada typo di link sidebar atau rute lainnya */}
       <Route path="*" element={<Navigate to="/signin" />} />
     </Routes>
   );
