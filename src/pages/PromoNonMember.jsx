@@ -5,9 +5,9 @@ import { User } from 'lucide-react'; // Import ikon User
 const PromoCard = ({ image, title, description }) => (
   <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-md overflow-hidden mb-6 p-4">
     <div className="md:w-1/3 flex justify-center items-center p-2">
-      {/* Gambar placeholder. Ganti dengan path gambar yang sebenarnya */}
+      {/* Gambar promo */}
       <img
-        src={image}
+        src={image} // Path yang sudah disesuaikan
         alt={title}
         className="w-full h-48 md:h-full object-cover rounded-lg"
       />
@@ -24,24 +24,12 @@ const PromoCard = ({ image, title, description }) => (
 
 const PromoNonMember = () => {
   return (
-    // Hapus div Sidebar dari sini, karena LayoutUser yang akan merender Sidebar
-    // <div className="flex min-h-screen bg-gray-100">
-    //   <Sidebar />
-    //   <div className="flex-1 p-8">
-    <div className="flex-1 p-8 bg-gray-100 min-h-screen"> {/* Sesuaikan ini */}
+    <div className="flex-1 p-8 bg-gray-100 min-h-screen">
       {/* Header di atas konten utama */}
       <div className="flex justify-between items-center mb-6">
         {/* Konten kiri: "promo non member" */}
         <div className="flex items-center gap-2">
-            {/* Di gambar, "promo non member" adalah teks kecil di kiri atas,
-                bukan bagian dari logo klinik utama.
-                Saya menempatkannya sebagai teks biasa, tanpa logo tambahan di sini,
-                karena logo klinik sudah di sidebar.
-                Jika 'promo non member' ini adalah judul halaman dan ada di sebelah logo
-                di bagian atas, maka penempatannya perlu disesuaikan lagi.
-                Berdasarkan gambar, 'promo non member' ini seperti label kecil di pojok kiri atas browser/tab.
-            */}
-            {/* Mempertahankan "promo non member" sebagai h1 kecil di pojok atas */}
+            {/* "promo non member" sebagai teks kecil di pojok kiri atas */}
             <p className="text-sm font-semibold text-gray-700">promo non member</p>
         </div>
 
@@ -52,10 +40,11 @@ const PromoNonMember = () => {
       </div>
 
       {/* Bagian utama Explore Our Special Offers */}
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-8 text-center relative overflow-hidden">
-        {/* Background blur/gradient, contoh sederhana */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#EBDADA] to-[#F9F3F3] opacity-50"></div>
-        <div className="relative z-10">
+      {/* MENGHILANGKAN background blur/gradient dan gambar latar belakang */}
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-8 text-center"> {/* Hapus relative dan overflow-hidden jika tidak perlu */}
+        {/* Hapus div background absolute di sini */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#EBDADA] to-[#F9F3F3] opacity-50"></div> */}
+        <div className="z-10"> {/* Hapus relative jika div parent juga sudah diubah */}
           <h2 className="text-3xl font-bold text-[#800000] mb-4">Explore Our Special Offers</h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
             Unlock exclusive beauty experiences with our limited-time promotions. Discover your path to radiant confidence. Explore now.
@@ -66,19 +55,22 @@ const PromoNonMember = () => {
       {/* Daftar Promo */}
       <div className="space-y-6">
         <PromoCard
-          image="/public/images/laser.jpeg" // Ganti dengan path gambar Laser Proyellow Anda yang sebenarnya
+          // --- PATH GAMBAR TELAH DIREVISI ---
+          // Pastikan gambar 'laser.jpeg' Anda ada di folder 'public/images/'
+          image="/images/laser.jpeg"
           title="Laser Proyellow"
           description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"
         />
         <PromoCard
-          image="/public/images/DnaSalmon.jpeg" // Ganti dengan path gambar DNA Salmon Anda yang sebenarnya
+          // --- PATH GAMBAR TELAH DIREVISI ---
+          // Pastikan gambar 'DnaSalmon.jpeg' Anda ada di folder 'public/images/'
+          image="/images/DnaSalmon.jpeg"
           title="DNA Salmon"
           description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"
         />
         {/* Tambahkan PromoCard lain jika ada promo tambahan */}
       </div>
     </div>
-    // </div> // Penutup div sebelumnya jika menggunakan div wrapper flex
   );
 };
 
