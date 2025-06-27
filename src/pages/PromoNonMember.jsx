@@ -66,12 +66,12 @@ const PromoNonMember = () => {
       {/* Daftar Promo */}
       <div className="space-y-6">
         <PromoCard
-          image="/public/images/laser-proyellow.jpg" // Ganti dengan path gambar Laser Proyellow Anda yang sebenarnya
+          image="/public/images/laser.jpeg" // Ganti dengan path gambar Laser Proyellow Anda yang sebenarnya
           title="Laser Proyellow"
           description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"
         />
         <PromoCard
-          image="/public/images/dna-salmon.jpg" // Ganti dengan path gambar DNA Salmon Anda yang sebenarnya
+          image="/public/images/DnaSalmon.jpeg" // Ganti dengan path gambar DNA Salmon Anda yang sebenarnya
           title="DNA Salmon"
           description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"
         />
