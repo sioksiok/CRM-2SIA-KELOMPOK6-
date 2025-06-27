@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PromoCard = ({ image, title, description }) => (
-  <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden mb-6 p-4 hover:shadow-lg transition-shadow duration-300">
+  <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-md overflow-hidden mb-6 p-4 hover:shadow-lg transition-shadow duration-300">
     <div className="md:w-1/3 flex justify-center items-center p-2">
       <img
         src={image}
@@ -10,9 +10,9 @@ const PromoCard = ({ image, title, description }) => (
       />
     </div>
     <div className="md:w-2/3 p-4">
-      <h3 className="text-xl font-bold text-[#1E1B4B] mb-1">{title}</h3>
-      <p className="text-sm font-semibold text-[#6C63FF] mb-2">General manager</p>
-      <p className="text-gray-600 text-sm leading-relaxed">
+      <h3 className="text-xl font-bold text-[#800000] mb-1">{title}</h3>
+      <p className="text-sm font-semibold text-[#CFCFE5] mb-2">General manager</p>
+      <p className="text-gray-700 text-sm leading-relaxed">
         {description}
       </p>
     </div>
@@ -22,9 +22,9 @@ const PromoCard = ({ image, title, description }) => (
 const PromoNonMember = () => {
   return (
     <div className="flex-1 bg-gray-100 min-h-screen font-sans">
-      {/* Area Hero dengan Background */}
+      {/* Hero section dengan gambar background */}
       <div
-        className="relative pt-20 pb-20 px-8 text-center"
+        className="relative pt-16 pb-20 px-6 text-center"
         style={{
           backgroundImage: 'url("/bg2 1.png")',
           backgroundSize: 'cover',
@@ -33,18 +33,19 @@ const PromoNonMember = () => {
         }}
       >
         <div className="absolute inset-0 bg-white opacity-40"></div>
-        <div className="relative z-10">
+
+        <div className="relative z-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Explore Our Special Offers
           </h2>
-          <p className="text-base md:text-lg text-gray-800 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-gray-800 leading-relaxed">
             Unlock exclusive beauty experiences with our limited-time promotions. Discover your path to radiant confidence. Explore now.
           </p>
         </div>
       </div>
 
-      {/* List Promo */}
-      <div className="p-8 pt-6 space-y-6">
+      {/* Daftar promo cards */}
+      <div className="px-6 py-10 max-w-4xl mx-auto space-y-6">
         <PromoCard
           image="/laser.jpeg"
           title="Laser Proyellow"
