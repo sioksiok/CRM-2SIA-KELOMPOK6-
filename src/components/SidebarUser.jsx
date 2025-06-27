@@ -16,7 +16,9 @@ const menuItems = [
   { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
   { name: 'For You', icon: <Heart />, path: '/foryou' }, // Ikon hati untuk For You
   { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' }, // Ikon pesan/awan untuk Feedback
-  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, 
+  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' },
+  // Tambahkan item menu untuk Promo Non Member di sini:
+  { name: 'Promo Non Member', icon: <Megaphone/>, path: '/promo-non-member' }, // Menggunakan ikon Megaphone yang sama
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   // Item menu lain yang tidak ada di gambar dihapus
 ];
