@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowLeft, ArrowRight, User as UserIcon } from 'lucide-react';
 
@@ -98,13 +97,12 @@ const FeedbackUser = () => {
 
   return (
     <div className="p-0">
-      <div className="relative bg-softwhite rounded-xl shadow-lg overflow-hidden h-[calc(100vh-140px)]">
+      <div className="relative bg-[#F9F3F3] rounded-xl shadow-lg overflow-hidden h-[calc(100vh-140px)]"> {/* Updated background color */}
         {/* Background gambar dan overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
-            // MENGGUNAKAN NAMA FILE feedback.png DARI FOLDER PUBLIC/
-            backgroundImage: "url('/feedback.png')", // <--- PERUBAHAN DI SINI
+            backgroundImage: "url('/feedback.png')",
             filter: 'brightness(0.7) blur(1px)',
             backgroundPosition: 'center 40%',
           }}
@@ -125,13 +123,13 @@ const FeedbackUser = () => {
             {feedbacks.map((feedback) => (
               <div
                 key={feedback.id}
-                className="flex-none w-80 bg-lightgray-card p-6 rounded-lg shadow-custom snap-center transform hover:scale-[1.02] transition-transform duration-200 cursor-pointer border border-lightgray-border"
+                className="flex-none w-80 bg-[#5D2020] p-6 rounded-lg shadow-custom snap-center transform hover:scale-[1.02] transition-transform duration-200 cursor-pointer border border-lightgray-border" // Updated background color
               >
-                <p className="text-lightgray-text text-base mb-4 leading-relaxed">
+                <p className="text-white text-base mb-4 leading-relaxed"> {/* Updated text color */}
                   "{feedback.text}"
                 </p>
-                <p className="font-semibold text-maroon-text text-lg">{feedback.author}</p>
-                <p className="text-sm text-gray-500">{feedback.email}</p>
+                <p className="font-semibold text-white text-lg">{feedback.author}</p> {/* Updated text color */}
+                <p className="text-white text-sm">{feedback.email}</p> {/* Updated text color */}
               </div>
             ))}
           </div>
@@ -177,7 +175,7 @@ const FeedbackUser = () => {
           </div>
 
           <div className="absolute bottom-10 right-10">
-            <button className="bg-maroon text-softwhite px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-maroon-light transition-colors duration-200">
+            <button className="bg-[#5D2020] text-softwhite px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-maroon-light transition-colors duration-200"> {/* Updated button background color */}
               Feedback
             </button>
           </div>
