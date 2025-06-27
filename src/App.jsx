@@ -59,7 +59,7 @@ function App() {
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/feedback" element={<FeedbackUser />} />
         <Route path="/pusat-bantuan" element={<PusatBantuan />} /> {/* Asumsi PusatBantuan ini adalah versi user */}
-        <Route path="/promo-non-member" element={<PromoNonMember />} /> {/* <-- RUTE BARU */}
+        <Route path="/promo-non-member" element={<PromoNonMember/>} /> {/* <-- RUTE BARU */}
       </Route>
 
       {/* Halaman Autentikasi */}
