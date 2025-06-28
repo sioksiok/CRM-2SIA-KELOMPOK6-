@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePromos } from "../context/PromoContext";
 
 export default function KelolaPromoUmum() {
@@ -13,6 +13,17 @@ export default function KelolaPromoUmum() {
   });
 
   const [imagePreview, setImagePreview] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    // Perbarui image preview saat form.image berubah (untuk kasus edit)
+    if (form.image) {
+      setImagePreview(form.image);
+    } else {
+      setImagePreview(null);
+    }
+  }, [form.image]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -28,28 +39,7 @@ export default function KelolaPromoUmum() {
     }
   };
 
-  const handleAdd = () => {
-    if (
-      !form.title ||
-      !form.description ||
-      !form.originalPrice ||
-      !form.discountedPrice
-    ) {
-      alert("Semua field wajib diisi!");
-      return;
-    }
-
-    const newPromo = {
-      id: Date.now(),
-      ...form,
-      type: "umum", // <-- penting agar bisa difilter
-      active: true,
-      originalPrice: parseInt(form.originalPrice),
-      discountedPrice: parseInt(form.discountedPrice),
-    };
-
-    setPromos((prev) => [...prev, newPromo]);
-
+  const resetForm = () => {
     setForm({
       title: "",
       description: "",
@@ -58,6 +48,68 @@ export default function KelolaPromoUmum() {
       image: "",
     });
     setImagePreview(null);
+    setIsEditing(false);
+    setEditId(null);
+  };
+
+  const handleAdd = () => {
+    if (!form.title || !form.description || !form.originalPrice || !form.discountedPrice) {
+      alert("Semua field wajib diisi!");
+      return;
+    }
+
+    const newPromo = {
+      id: Date.now(),
+      ...form,
+      type: "umum",
+      active: true,
+      originalPrice: parseInt(form.originalPrice),
+      discountedPrice: parseInt(form.discountedPrice),
+    };
+
+    setPromos((prev) => [...prev, newPromo]);
+    resetForm();
+  };
+
+  const handleEdit = (promo) => {
+    setForm({
+      title: promo.title,
+      description: promo.description,
+      originalPrice: promo.originalPrice.toString(),
+      discountedPrice: promo.discountedPrice.toString(),
+      image: promo.image,
+    });
+    setImagePreview(promo.image);
+    setIsEditing(true);
+    setEditId(promo.id);
+  };
+
+  const handleUpdate = () => {
+    if (!form.title || !form.description || !form.originalPrice || !form.discountedPrice) {
+      alert("Semua field wajib diisi!");
+      return;
+    }
+
+    const updatedPromo = {
+      id: editId,
+      ...form,
+      type: "umum",
+      active: true,
+      originalPrice: parseInt(form.originalPrice),
+      discountedPrice: parseInt(form.discountedPrice),
+    };
+
+    setPromos((prev) =>
+      prev.map((p) => (p.id === editId ? updatedPromo : p))
+    );
+    resetForm();
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Yakin ingin menghapus promo ini?")) {
+      setPromos((prev) => prev.filter((p) => p.id !== id));
+      if (editId === id) resetForm();
+    }
   };
 
   const promoUmum = promos.filter((p) => p.type === "umum");
@@ -80,9 +132,11 @@ export default function KelolaPromoUmum() {
           Kelola Promo Umum
         </h1>
 
-        {/* Form Tambah */}
+        {/* Form Tambah/Edit */}
         <div className="mb-10">
-          <h2 className="text-xl font-bold mb-4 text-maroon">Tambah Promo</h2>
+          <h2 className="text-xl font-bold mb-4 text-maroon">
+            {isEditing ? "Edit Promo" : "Tambah Promo"}
+          </h2>
           <input
             type="text"
             name="title"
@@ -129,19 +183,36 @@ export default function KelolaPromoUmum() {
               className="mb-2 w-32 h-32 object-cover rounded-lg border border-maroon"
             />
           )}
-          <button
-            onClick={handleAdd}
-            className="w-full py-3 rounded-2xl font-semibold bg-maroon text-white hover:bg-red-700 transition"
-          >
-            Simpan Promo
-          </button>
+          <div className="space-x-2">
+            {isEditing ? (
+              <>
+                <button
+                  onClick={handleUpdate}
+                  className="w-full py-3 rounded-2xl font-semibold bg-yellow-600 text-white hover:bg-yellow-700 transition"
+                >
+                  Update Promo
+                </button>
+                <button
+                  onClick={resetForm}
+                  className="w-full mt-2 py-3 rounded-2xl font-semibold bg-gray-500 text-white hover:bg-gray-600 transition"
+                >
+                  Batal
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={handleAdd}
+                className="w-full py-3 rounded-2xl font-semibold bg-maroon text-white hover:bg-red-700 transition"
+              >
+                Simpan Promo
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Daftar Promo */}
         <div>
-          <h2 className="text-xl font-bold mb-4 text-maroon">
-            Daftar Promo Umum
-          </h2>
+          <h2 className="text-xl font-bold mb-4 text-maroon">Daftar Promo Umum</h2>
           <div className="space-y-4">
             {promoUmum.length === 0 ? (
               <p className="text-maroon opacity-70 font-medium">
@@ -169,6 +240,20 @@ export default function KelolaPromoUmum() {
                     <p className="text-red-600 font-bold">
                       Rp {promo.discountedPrice.toLocaleString("id-ID")}
                     </p>
+                  </div>
+                  <div className="space-x-2">
+                    <button
+                      onClick={() => handleEdit(promo)}
+                      className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(promo.id)}
+                      className="px-3 py-1 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200"
+                    >
+                      Hapus
+                    </button>
                   </div>
                 </div>
               ))
