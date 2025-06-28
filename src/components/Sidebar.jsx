@@ -20,6 +20,7 @@ const menuItems = [
   { name: 'Segmentasi Pelanggan', icon: <User />, path: '/cek-status-member' },
   { name: 'Kelola Promo Pelanggan', icon: <Gift />, path: '/manage-promo-admin' }, // Changed icon to Gift based on image context (Promo)
   { name: 'Pemesanan Layanan & Produk', icon: <ShoppingBagIcon />, path: '/pemesanan-layanan-produk' },
+  { name: 'Admin FAQ', icon: <Box />, path: '/admin-faq'},
 ]
 
 const Sidebar = () => {

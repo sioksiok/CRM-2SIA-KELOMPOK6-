@@ -15,6 +15,7 @@ import ManagePromoAdmin from "./pages/ManagePromoAdmin";
 import AktivitasPelanggan from "./pages/AktivitasPelanggan";
 import PemesananLayanan from "./pages/PemesananLayananProduk";
 import PusatBantuan from "./pages/PusatBantuan"; // dipakai juga oleh user
+import AdminFAQ from "./pages/AdminFAQ";
 // import User from "./pages/User"; // Tidak ada rute untuk User di bawah ini, jika tidak dipakai, bisa dihapus
 
 // Halaman User
@@ -43,6 +44,7 @@ function App() {
         <Route path="/akun" element={<Akun />} />
         <Route path="/manage-promo-admin" element={<ManagePromoAdmin />} />
         <Route path="/aktivitas-pelanggan" element={<AktivitasPelanggan />} />
+        <Route path="/admin-faq" element={<AdminFAQ />} />
       </Route>
 
       {/* Layout untuk User */}
