@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { usePromos } from "../context/PromoContext";
 
 export default function KelolaPromoUmum() {
-  const { promos, setPromos } = usePromos();
+  const { promos, addPromo, updatePromo, deletePromo } = usePromos();
 
   const [form, setForm] = useState({
     title: "",
@@ -17,7 +17,6 @@ export default function KelolaPromoUmum() {
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    // Perbarui image preview saat form.image berubah (untuk kasus edit)
     if (form.image) {
       setImagePreview(form.image);
     } else {
@@ -59,7 +58,6 @@ export default function KelolaPromoUmum() {
     }
 
     const newPromo = {
-      id: Date.now(),
       ...form,
       type: "umum",
       active: true,
@@ -67,7 +65,7 @@ export default function KelolaPromoUmum() {
       discountedPrice: parseInt(form.discountedPrice),
     };
 
-    setPromos((prev) => [...prev, newPromo]);
+    addPromo(newPromo);
     resetForm();
   };
 
@@ -99,15 +97,13 @@ export default function KelolaPromoUmum() {
       discountedPrice: parseInt(form.discountedPrice),
     };
 
-    setPromos((prev) =>
-      prev.map((p) => (p.id === editId ? updatedPromo : p))
-    );
+    updatePromo(updatedPromo);
     resetForm();
   };
 
   const handleDelete = (id) => {
     if (window.confirm("Yakin ingin menghapus promo ini?")) {
-      setPromos((prev) => prev.filter((p) => p.id !== id));
+      deletePromo(id);
       if (editId === id) resetForm();
     }
   };
