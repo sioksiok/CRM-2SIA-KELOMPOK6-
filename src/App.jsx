@@ -28,6 +28,7 @@ import PromoNonMember from "./pages/PromoNonMember"; // Sudah diimpor dengan ben
 // Halaman Autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import KelolaPromoUmum from "./pages/KelolaPromoUmum";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/pemesanan-layanan-produk" element={<PemesananLayanan />} />
         <Route path="/akun" element={<Akun />} />
         <Route path="/manage-promo-admin" element={<ManagePromoAdmin />} />
+        <Route path="/kelola-promo-umum" element={<KelolaPromoUmum />} />
         <Route path="/aktivitas-pelanggan" element={<AktivitasPelanggan />} />
         <Route path="/admin-faq" element={<AdminFAQ />} />
       </Route>

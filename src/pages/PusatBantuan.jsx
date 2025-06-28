@@ -76,7 +76,11 @@ export default function PusatBantuan() {
         {/* Select Kategori */}
         <div className="mb-8">
           <select
-            className="border border-white bg-transparent text-white px-4 py-2 rounded-xl focus:outline-none"
+  className="border border-white bg-white text-maroon px-4 py-2 rounded-xl focus:outline-none"
+  style={{
+    backgroundColor: "rgba(255, 255, 255, 0.85)",
+    color: "#800000",
+  }}
             value={selectedKategori}
             onChange={(e) => setSelectedKategori(e.target.value)}
           >
