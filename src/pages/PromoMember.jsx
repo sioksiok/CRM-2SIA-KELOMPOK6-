@@ -1,30 +1,33 @@
-
 import React from "react";
-// This is the correct path if PromoContext.js is in src/context/
-import { usePromos } from "../context/PromoContext";
+import { usePromos } from "../context/PromoContext"; // ✅ pastikan path benar
 
 export default function PromoMember() {
-  // The rest of your PromoMember code remains the same as before
   const { promos } = usePromos();
 
+  // Filter promo khusus member yang aktif
   const memberPromos = promos.filter(
     (promo) => promo.type === "member" && promo.active
   );
 
+  // Promo utama (besar) berdasarkan level Gold atau Platinum
   const largePromo = memberPromos.find(
-    (promo) => promo.level && (promo.level.includes("Gold") || promo.level.includes("Platinum"))
+    (promo) =>
+      promo.level &&
+      (promo.level.includes("Gold") || promo.level.includes("Platinum"))
   );
+
+  // Sisanya dianggap promo tambahan
   const smallPromos = memberPromos.filter(
-    (promo) => promo.id !== (largePromo ? largePromo.id : null)
+    (promo) => promo.id !== (largePromo?.id ?? null)
   );
 
   return (
     <div className="relative">
-      {/* Background foto dengan opacity 70% */}
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
         style={{ backgroundImage: "url('/treatment1.jpg')" }}
-      ></div>
+      />
 
       {/* Konten utama */}
       <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
@@ -33,12 +36,11 @@ export default function PromoMember() {
         </h1>
         <p className="text-center text-gray-600 text-sm sm:text-base max-w-3xl mx-auto mb-12">
           Unlock exclusive beauty experiences with our limited-time promotions.
-          Discover your path to radiant confidence. Explore now.
         </p>
 
         {memberPromos.length > 0 ? (
           <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
-            {/* Kolom Kiri */}
+            {/* Promo tambahan */}
             <div className="flex flex-col space-y-6">
               {smallPromos.map((promo) => (
                 <div
@@ -75,7 +77,7 @@ export default function PromoMember() {
               ))}
             </div>
 
-            {/* Kolom Kanan */}
+            {/* Promo utama */}
             {largePromo && (
               <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
                 <img

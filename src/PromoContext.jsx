@@ -1,10 +1,9 @@
-// src/context/PromoContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
 // Membuat Context
 const PromoContext = createContext();
 
-// Data promo awal (bisa kosong atau diisi dengan data dummy)
+// Data promo awal
 const initialPromos = [
   {
     id: 1,
@@ -15,25 +14,24 @@ const initialPromos = [
     discountedPrice: 135000,
     active: true,
     image: "",
-    type: "member" // Tambahkan tipe promo
+    type: "member"
   },
   {
     id: 2,
     title: "Gratis Konsultasi Umum",
-    level: "Umum", // Bisa juga menggunakan 'level' 'Umum' atau biarkan kosong jika tidak relevan
+    level: "Umum",
     description: "Konsultasi dokter gratis untuk semua pengunjung.",
     originalPrice: 100000,
     discountedPrice: 0,
     active: true,
-    image: "https://example.com/promo_umum.jpg", // Contoh gambar untuk promo umum
-    type: "umum" // Tambahkan tipe promo
+    image: "https://example.com/promo_umum.jpg",
+    type: "umum"
   },
-  // Tambahkan data promo member dari promoMember.js ke sini
   {
     id: 3,
     title: "Advanced Yellow Laser",
     level: "Gold",
-    description: "Explore the therapeutic benefits of hand massages and how they can alleviate tension and stress. Learn simple techniques to treat your hands to some well-deserved TLC.",
+    description: "Explore therapeutic benefits of hand massages...",
     originalPrice: 250000,
     discountedPrice: 175000,
     active: true,
@@ -44,7 +42,7 @@ const initialPromos = [
     id: 4,
     title: "Ultimate Eye Peel",
     level: "Silver",
-    description: "Dive into the world of hair treatment and discover effective ways to revitalize and maintain your hair’s natural beauty. From deep conditioning to scalp massage, we’ll guide you to the perfect hair care routine.",
+    description: "Dive into the world of hair treatment...",
     originalPrice: 200000,
     discountedPrice: 145000,
     active: true,
@@ -55,7 +53,7 @@ const initialPromos = [
     id: 5,
     title: "CO2 Acne Scar",
     level: "Platinum",
-    description: "Embark on a journey of relaxation and rejuvenation with body massages. Uncover the physical and mental benefits of this timeless practice, from relieving muscle tension to reducing stress.",
+    description: "Embark on a journey of relaxation...",
     originalPrice: 300000,
     discountedPrice: 210000,
     active: true,
@@ -66,7 +64,7 @@ const initialPromos = [
     id: 6,
     title: "Acne Injection",
     level: "Gold & Platinum",
-    description: "Dive into the world of facial massages and the rejuvenating effects of eye masks. Discover how these skincare rituals can enhance your natural beauty, reduce puffiness.",
+    description: "Dive into the world of facial massages...",
     originalPrice: 220000,
     discountedPrice: 150000,
     active: true,
@@ -75,22 +73,18 @@ const initialPromos = [
   },
 ];
 
-
-// Membuat PromoProvider untuk menyediakan data promo ke komponen lain
+// Provider
 export const PromoProvider = ({ children }) => {
   const [promos, setPromos] = useState(initialPromos);
 
   const addPromo = (newPromo) => {
-    // Tambahkan id unik yang lebih robust
-    const promoWithId = { ...newPromo, id: Date.now() }; // Menggunakan timestamp sebagai ID
-    setPromos((prevPromos) => [...prevPromos, promoWithId]);
+    const promoWithId = { ...newPromo, id: Date.now() };
+    setPromos((prev) => [...prev, promoWithId]);
   };
 
   const deletePromo = (id) => {
-    setPromos((prevPromos) => prevPromos.filter((promo) => promo.id !== id));
+    setPromos((prev) => prev.filter((promo) => promo.id !== id));
   };
-
-  // Anda bisa menambahkan fungsi untuk update promo juga jika diperlukan
 
   return (
     <PromoContext.Provider value={{ promos, addPromo, deletePromo }}>
@@ -99,5 +93,5 @@ export const PromoProvider = ({ children }) => {
   );
 };
 
-// Hook kustom untuk memudahkan penggunaan context
+// Hook custom
 export const usePromos = () => useContext(PromoContext);
