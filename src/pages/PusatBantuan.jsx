@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import { Mail, CalendarCheck, Truck, XCircle, DollarSign, Tag } from "lucide-react";
-import { useFaqs } from "../FaqContext"; // Sesuaikan path jika FaqContext.js ada di folder lain
+import { useFaqs } from "../FaqContext.jsx"; // <<< PERUBAHAN DI SINI: Tambahkan .jsx
+// Sesuaikan path jika FaqContext.jsx ada di folder lain
 
 export default function PusatBantuan() {
   // Ambil data FAQ dari Context

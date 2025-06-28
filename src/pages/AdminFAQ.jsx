@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
-import { useFaqs } from "../FaqContext"; // Sesuaikan path jika FaqContext.js ada di folder lain
+import { useFaqs } from "../FaqContext.jsx"; // <<< PERUBAHAN DI SINI: Tambahkan .jsx
+// Sesuaikan path jika FaqContext.jsx ada di folder lain
 
 export default function AdminFAQ() {
   // Ambil state dan fungsi dari Context
