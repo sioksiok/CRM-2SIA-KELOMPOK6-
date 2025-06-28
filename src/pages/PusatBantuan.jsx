@@ -1,58 +1,41 @@
+
 import React, { useState } from "react";
 import { Mail, CalendarCheck, Truck, XCircle, DollarSign, Tag } from "lucide-react";
-
-const faqList = [
-  {
-    kategori: "Perawatan Kulit",
-    pertanyaan: "Apa itu facial dan manfaatnya?",
-    jawaban:
-      "Facial adalah perawatan kulit wajah untuk membersihkan pori-pori, mengangkat sel kulit mati, dan meremajakan kulit.",
-    icon: <Mail className="w-6 h-6 text-maroon" />,
-  },
-  {
-    kategori: "Perawatan Kulit",
-    pertanyaan: "Berapa kali sebaiknya melakukan facial?",
-    jawaban:
-      "Facial disarankan dilakukan 1-2 kali dalam sebulan tergantung jenis kulit dan kebutuhan.",
-    icon: <CalendarCheck className="w-6 h-6 text-maroon" />,
-  },
-  {
-    kategori: "Panduan Layanan",
-    pertanyaan: "Bagaimana cara melakukan pemesanan layanan di Aira Skin?",
-    jawaban:
-      "Anda dapat memesan layanan melalui aplikasi dengan mengisi formulir pemesanan dan memilih jadwal.",
-    icon: <Truck className="w-6 h-6 text-maroon" />,
-  },
-  {
-    kategori: "Panduan Layanan",
-    pertanyaan: "Apakah saya perlu registrasi untuk melakukan perawatan?",
-    jawaban:
-      "Ya, Anda harus mendaftar terlebih dahulu sebagai pelanggan agar kami dapat mencatat riwayat perawatan Anda.",
-    icon: <XCircle className="w-6 h-6 text-maroon" />,
-  },
-  {
-    kategori: "Panduan Layanan",
-    pertanyaan: "Apa itu Instant Refunds?",
-    jawaban:
-      "Refund instan diberikan setelah produk dikembalikan dengan sukses dan diperiksa oleh staf kami.",
-    icon: <DollarSign className="w-6 h-6 text-maroon" />,
-  },
-  {
-    kategori: "Panduan Layanan",
-    pertanyaan: "Bagaimana cara menggunakan kupon pada pesanan saya?",
-    jawaban:
-      "Kupon dapat diterapkan saat checkout. Kupon aktif akan terlihat di menu 'My Coupons'.",
-    icon: <Tag className="w-6 h-6 text-maroon" />,
-  },
-];
+import { useFaqs } from "../FaqContext"; // Sesuaikan path jika FaqContext.js ada di folder lain
 
 export default function PusatBantuan() {
+  // Ambil data FAQ dari Context
+  const { faqs } = useFaqs();
   const [selectedKategori, setSelectedKategori] = useState("Semua");
 
-  const filterFaq = () => {
-    if (selectedKategori === "Semua") return faqList;
-    return faqList.filter((faq) => faq.kategori === selectedKategori);
+  // Fungsi untuk menambahkan ikon berdasarkan kategori
+  const getIconForCategory = (kategori) => {
+    switch (kategori) {
+      case "Perawatan Kulit":
+        return <Mail className="w-6 h-6 text-maroon" />;
+      case "Panduan Layanan":
+        return <Truck className="w-6 h-6 text-maroon" />;
+      case "Pembayaran": // Contoh kategori baru
+        return <DollarSign className="w-6 h-6 text-maroon" />;
+      // Tambahkan lebih banyak kasus jika Anda memiliki kategori lain di masa mendatang
+      default:
+        return <CalendarCheck className="w-6 h-6 text-maroon" />; // Ikon default
+    }
   };
+
+  const filterFaq = () => {
+    // Gabungkan data FAQ dari context dengan ikon yang sesuai
+    const faqsWithIcons = faqs.map(faq => ({
+      ...faq,
+      icon: getIconForCategory(faq.kategori)
+    }));
+
+    if (selectedKategori === "Semua") return faqsWithIcons;
+    return faqsWithIcons.filter((faq) => faq.kategori === selectedKategori);
+  };
+
+  // Dapatkan kategori unik dari data FAQ yang ada untuk dropdown filter
+  const uniqueCategories = ["Semua", ...new Set(faqs.map(faq => faq.kategori))];
 
   return (
     <div className="relative min-h-screen w-full">
@@ -76,17 +59,18 @@ export default function PusatBantuan() {
         {/* Select Kategori */}
         <div className="mb-8">
           <select
-  className="border border-white bg-white text-maroon px-4 py-2 rounded-xl focus:outline-none"
-  style={{
-    backgroundColor: "rgba(255, 255, 255, 0.85)",
-    color: "#800000",
-  }}
+            className="border border-white bg-white text-maroon px-4 py-2 rounded-xl focus:outline-none"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.85)",
+              color: "#800000",
+            }}
             value={selectedKategori}
             onChange={(e) => setSelectedKategori(e.target.value)}
           >
-            <option value="Semua">Semua Kategori</option>
-            <option value="Perawatan Kulit">Perawatan Kulit</option>
-            <option value="Panduan Layanan">Panduan Layanan</option>
+            {/* Render opsi kategori secara dinamis */}
+            {uniqueCategories.map((category) => (
+                <option key={category} value={category}>{category}</option>
+            ))}
           </select>
         </div>
 

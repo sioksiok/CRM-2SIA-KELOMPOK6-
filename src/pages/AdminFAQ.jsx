@@ -1,28 +1,26 @@
-import React, { useState } from "react";
 
-const initialFaqs = [
-  {
-    kategori: "Perawatan Kulit",
-    pertanyaan: "Apa itu facial dan manfaatnya?",
-    jawaban:
-      "Facial adalah perawatan kulit wajah untuk membersihkan pori-pori, mengangkat sel kulit mati, dan meremajakan kulit.",
-  },
-  {
-    kategori: "Panduan Layanan",
-    pertanyaan: "Bagaimana cara melakukan pemesanan layanan di Aira Skin?",
-    jawaban:
-      "Anda dapat memesan layanan melalui aplikasi dengan mengisi formulir pemesanan dan memilih jadwal.",
-  },
-];
+import React, { useState, useEffect } from "react";
+import { useFaqs } from "../FaqContext"; // Sesuaikan path jika FaqContext.js ada di folder lain
 
 export default function AdminFAQ() {
-  const [faqs, setFaqs] = useState(initialFaqs);
+  // Ambil state dan fungsi dari Context
+  const { faqs, addFaq, updateFaq, deleteFaq } = useFaqs();
+
   const [editingIndex, setEditingIndex] = useState(null);
   const [formData, setFormData] = useState({
     kategori: "",
     pertanyaan: "",
     jawaban: "",
   });
+
+  // Saat mode edit, isi form dengan data FAQ yang diedit
+  useEffect(() => {
+    if (editingIndex !== null) {
+      setFormData(faqs[editingIndex]);
+    } else {
+      setFormData({ kategori: "", pertanyaan: "", jawaban: "" }); // Reset form saat tidak dalam mode edit
+    }
+  }, [editingIndex, faqs]); // Tambahkan faqs sebagai dependency untuk memastikan data terbaru
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,14 +29,12 @@ export default function AdminFAQ() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editingIndex !== null) {
-      const updatedFaqs = [...faqs];
-      updatedFaqs[editingIndex] = formData;
-      setFaqs(updatedFaqs);
+      updateFaq(editingIndex, formData); // Gunakan fungsi update dari Context
       setEditingIndex(null);
     } else {
-      setFaqs([...faqs, formData]);
+      addFaq(formData); // Gunakan fungsi add dari Context
     }
-    setFormData({ kategori: "", pertanyaan: "", jawaban: "" });
+    setFormData({ kategori: "", pertanyaan: "", jawaban: "" }); // Reset form setelah submit
   };
 
   const handleEdit = (index) => {
@@ -47,8 +43,7 @@ export default function AdminFAQ() {
   };
 
   const handleDelete = (index) => {
-    const filtered = faqs.filter((_, i) => i !== index);
-    setFaqs(filtered);
+    deleteFaq(index); // Gunakan fungsi delete dari Context
     if (editingIndex === index) {
       setEditingIndex(null);
       setFormData({ kategori: "", pertanyaan: "", jawaban: "" });
@@ -97,6 +92,7 @@ export default function AdminFAQ() {
             <option value="">Pilih Kategori</option>
             <option value="Perawatan Kulit">Perawatan Kulit</option>
             <option value="Panduan Layanan">Panduan Layanan</option>
+            {/* Tambahkan kategori lain jika diperlukan */}
           </select>
 
           <input
