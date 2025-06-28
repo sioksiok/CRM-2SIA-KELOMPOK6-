@@ -11,6 +11,12 @@ import { FaHistory } from 'react-icons/fa'; // Tetap import jika FaHistory digun
 import { Link, useLocation } from 'react-router-dom';
 
 const menuItems = [
+  { name: 'Dashboard', icon: <Home />, path: '/dashboard-user' }, // Ikon rumah untuk Dashboard User
+  { name: 'For You', icon: <Heart />, path: '/foryou' }, // Ikon hati untuk For You
+  { name: 'Feedback', icon: <MessageCircleMore />, path: '/feedback' }, // Ikon pesan/awan untuk Feedback
+  { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, 
+  { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
+  // Item menu lain yang tidak ada di gambar dihapus
   // Pastikan properti 'icon' menyimpan komponen ikon itu sendiri (misal: Home), bukan hasil rendernya (<Home />)
   { name: 'Dashboard', icon: Home, path: '/dashboard-user' },
   { name: 'For You', icon: Heart, path: '/foryou' },
@@ -20,6 +26,7 @@ const menuItems = [
   { name: 'Promo Umum', icon: Megaphone, path: '/promo-umum' },
   // Mengubah nama dan ikon agar sesuai dengan gambar untuk FAQ
   { name: 'FAQ', icon: MessageCircleQuestion, path: '/faq' }, // Menggunakan MessageCircleQuestion dan path /faq
+  { name: 'FAQ', icon: MessageCircleQuestion, path: '/pusat-bantuan' }, // Menggunakan MessageCircleQuestion dan path /faq
 ];
 
 const Sidebar = () => {
