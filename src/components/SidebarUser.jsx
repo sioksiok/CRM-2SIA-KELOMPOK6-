@@ -19,6 +19,15 @@ const menuItems = [
   { name: 'Promo Member', icon: <Megaphone/>, path: '/promo-member' }, 
   { name: 'Pusat Bantuan & FAQ', icon: <FaHistory />, path: '/pusat-bantuan' },
   // Item menu lain yang tidak ada di gambar dihapus
+  // Pastikan properti 'icon' menyimpan komponen ikon itu sendiri (misal: Home), bukan hasil rendernya (<Home />)
+  { name: 'Dashboard', icon: Home, path: '/dashboard-user' },
+  { name: 'For You', icon: Heart, path: '/foryou' },
+  { name: 'Feedback', icon: MessageCircleMore, path: '/feedback' },
+  { name: 'Promo Member', icon: Megaphone, path: '/promo-member' },
+  // Ini adalah item menu "Promo Umum" yang Anda maksud, dengan path yang sesuai
+  { name: 'Promo Umum', icon: Megaphone, path: '/promo-umum' },
+  // Mengubah nama dan ikon agar sesuai dengan gambar untuk FAQ
+  { name: 'FAQ', icon: MessageCircleQuestion, path: '/pusat-bantuan' }, // Menggunakan MessageCircleQuestion dan path /faq
 ];
 
 const Sidebar = () => {
