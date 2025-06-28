@@ -1,20 +1,22 @@
 
 import React from "react";
-// PERBAIKAN JALUR IMPORT DI SINI
-import { usePromos } from '../context/PromoContext'; // Jika PromoMember.jsx di src/pages dan PromoContext.js di src/context
-// Atau jika PromoContext.js di src/context/PromoContext.js dan PromoMember.jsx di src/pages/PromoMember.jsx
-// Anda mungkin perlu: import { usePromos } from '../../context/PromoContext';
-// Mari kita asumsikan struktur standar: src/pages dan src/context
+// This is the correct path if PromoContext.js is in src/context/
+import { usePromos } from "../context/PromoContext";
 
 export default function PromoMember() {
+  // The rest of your PromoMember code remains the same as before
   const { promos } = usePromos();
 
-  // Filter hanya promo yang bertipe 'member' dan aktif
-  const memberPromos = promos.filter(promo => promo.type === 'member' && promo.active);
+  const memberPromos = promos.filter(
+    (promo) => promo.type === "member" && promo.active
+  );
 
-  // Jika Anda ingin memisahkan promo besar di kolom kanan, Anda bisa lakukan seperti ini:
-  const largePromo = memberPromos.find(promo => promo.level && (promo.level.includes("Gold") || promo.level.includes("Platinum")));
-  const smallPromos = memberPromos.filter(promo => promo.id !== (largePromo ? largePromo.id : null));
+  const largePromo = memberPromos.find(
+    (promo) => promo.level && (promo.level.includes("Gold") || promo.level.includes("Platinum"))
+  );
+  const smallPromos = memberPromos.filter(
+    (promo) => promo.id !== (largePromo ? largePromo.id : null)
+  );
 
   return (
     <div className="relative">
@@ -106,7 +108,9 @@ export default function PromoMember() {
             )}
           </div>
         ) : (
-          <p className="text-center text-gray-600 text-lg">Belum ada promo member yang tersedia saat ini.</p>
+          <p className="text-center text-gray-600 text-lg">
+            Belum ada promo member yang tersedia saat ini.
+          </p>
         )}
       </div>
     </div>
