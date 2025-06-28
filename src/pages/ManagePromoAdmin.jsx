@@ -1,9 +1,11 @@
 // src/components/ManagePromoAdmin.js
 import React, { useState } from "react";
 import { usePromos } from "../context/PromoContext";
+import { useNavigate } from "react-router-dom"; // ✅ Tambahkan ini
 
 export default function ManagePromoAdmin() {
   const { promos, addPromo, deletePromo } = usePromos();
+  const navigate = useNavigate(); // ✅ Gunakan ini untuk navigasi
 
   const [form, setForm] = useState({
     title: "",
@@ -113,7 +115,7 @@ export default function ManagePromoAdmin() {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold text-red-800">Kelola Promo Member</h1>
         <button
-          onClick={() => (window.location.href = "/manage-promo-umum")}
+          onClick={() => navigate("/kelola-promo-umum")}
           className="px-4 py-2 rounded-2xl font-semibold transition active:scale-95"
           style={{
             backgroundColor: "#800000",
