@@ -14,7 +14,8 @@ const menuItems = [
   { name: 'Feedback', icon: MessageCircleMore, path: '/feedback' },
   { name: 'Promo Member', icon: Megaphone, path: '/promo-member' },
   { name: 'Promo Umum', icon: Megaphone, path: '/promo-umum' },
-  { name: 'FAQ', icon: MessageCircleQuestion, path: '/pusat-bantuan' },
+  { name: 'FAQ', icon: MessageCircleQuestion, path: '/faq' },
+  { name: 'Pusat Bantuan', icon: MessageCircleQuestion, path: '/pusat-bantuan' },
 ];
 
 const SidebarUser = () => {
@@ -23,17 +24,19 @@ const SidebarUser = () => {
 
   return (
     <aside className="bg-[#F9F3F3] w-64 h-screen shadow-lg px-4 py-6 hidden md:block">
+      {/* Logo Aira Clinic */}
       <div className="flex items-center gap-2 mb-10 ml-2">
         <img src="/logoaira.png" alt="Aira Clinic Logo" className="w-10 h-10" />
         <div className="text-2xl font-bold text-[#800000]">Aira Clinic</div>
       </div>
 
+      {/* Navigasi */}
       <nav className="space-y-2">
         {menuItems.map((item, index) => {
           const Icon = item.icon;
           return (
             <Link
-              key={`${item.name}-${index}`} // Tambahkan index agar pasti unik
+              key={`${item.name}-${index}`} // Unik agar tidak error
               to={item.path}
               className={`flex items-center gap-3 px-3 py-3 rounded-lg transition ${
                 isActive(item.path)
@@ -42,7 +45,7 @@ const SidebarUser = () => {
               }`}
             >
               <span className="w-5 h-5 flex items-center justify-center">
-                {Icon && <Icon className="text-[#800000]" />}
+                <Icon className="text-[#800000]" />
               </span>
               {item.name}
             </Link>

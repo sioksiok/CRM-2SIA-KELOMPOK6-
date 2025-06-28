@@ -16,7 +16,7 @@ const menuItems = [
   { name: 'Kelola Promo Pelanggan', icon: Gift, path: '/manage-promo-admin' },
   { name: 'Pemesanan Layanan & Produk', icon: ShoppingBagIcon, path: '/pemesanan-layanan-produk' },
   { name: 'Admin FAQ', icon: Box, path: '/admin-faq' },
-];
+]
 
 const Sidebar = () => {
   const location = useLocation();
