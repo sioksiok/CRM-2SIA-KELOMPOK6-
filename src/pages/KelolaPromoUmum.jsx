@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { usePromo } from "../PromoContext";
+import { usePromos } from "../context/PromoContext";
 
 export default function KelolaPromoUmum() {
-  const { promoUmum, addPromoUmum } = usePromo();
+  const { promos, setPromos } = usePromos();
 
   const [form, setForm] = useState({
     title: "",
@@ -42,11 +42,13 @@ export default function KelolaPromoUmum() {
     const newPromo = {
       id: Date.now(),
       ...form,
+      type: "umum", // <-- penting agar bisa difilter
+      active: true,
       originalPrice: parseInt(form.originalPrice),
       discountedPrice: parseInt(form.discountedPrice),
     };
 
-    addPromoUmum(newPromo); // disimpan ke context global
+    setPromos((prev) => [...prev, newPromo]);
 
     setForm({
       title: "",
@@ -58,12 +60,12 @@ export default function KelolaPromoUmum() {
     setImagePreview(null);
   };
 
+  const promoUmum = promos.filter((p) => p.type === "umum");
+
   return (
     <div
       className="min-h-screen flex items-center justify-center py-10 px-4"
-      style={{
-        background: "linear-gradient(135deg, #800000 0%, #800000 100%)",
-      }}
+      style={{ background: "linear-gradient(135deg, #800000 0%, #800000 100%)" }}
     >
       <div
         className="w-full max-w-4xl rounded-3xl p-8"
@@ -74,13 +76,7 @@ export default function KelolaPromoUmum() {
             "0 10px 15px -3px rgba(128,0,0,0.5), 0 4px 6px -2px rgba(128,0,0,0.3)",
         }}
       >
-        <h1
-          className="text-3xl font-extrabold mb-6 text-center font-serif"
-          style={{
-            color: "#800000",
-            textShadow: "1px 1px 2px rgba(128,0,0,0.4)",
-          }}
-        >
+        <h1 className="text-3xl font-extrabold mb-6 text-center font-serif text-maroon">
           Kelola Promo Umum
         </h1>
 
@@ -93,24 +89,14 @@ export default function KelolaPromoUmum() {
             value={form.title}
             onChange={handleChange}
             placeholder="Judul Promo"
-            className="w-full px-4 py-2 mb-3 rounded-2xl border"
-            style={{
-              border: "1.5px solid #800000",
-              backgroundColor: "#fff",
-              color: "#800000",
-            }}
+            className="w-full px-4 py-2 mb-3 rounded-2xl border border-maroon bg-white text-maroon"
           />
           <textarea
             name="description"
             value={form.description}
             onChange={handleChange}
             placeholder="Deskripsi"
-            className="w-full px-4 py-2 mb-3 rounded-2xl"
-            style={{
-              border: "1.5px solid #800000",
-              backgroundColor: "#fff",
-              color: "#800000",
-            }}
+            className="w-full px-4 py-2 mb-3 rounded-2xl border border-maroon bg-white text-maroon"
           />
           <div className="flex space-x-4 mb-3">
             <input
@@ -119,12 +105,7 @@ export default function KelolaPromoUmum() {
               value={form.originalPrice}
               onChange={handleChange}
               placeholder="Harga Awal"
-              className="w-1/2 px-4 py-2 rounded-2xl border"
-              style={{
-                border: "1.5px solid #800000",
-                backgroundColor: "#fff",
-                color: "#800000",
-              }}
+              className="w-1/2 px-4 py-2 rounded-2xl border border-maroon bg-white text-maroon"
             />
             <input
               type="number"
@@ -132,12 +113,7 @@ export default function KelolaPromoUmum() {
               value={form.discountedPrice}
               onChange={handleChange}
               placeholder="Harga Promo"
-              className="w-1/2 px-4 py-2 rounded-2xl border"
-              style={{
-                border: "1.5px solid #800000",
-                backgroundColor: "#fff",
-                color: "#800000",
-              }}
+              className="w-1/2 px-4 py-2 rounded-2xl border border-maroon bg-white text-maroon"
             />
           </div>
           <input
@@ -155,18 +131,7 @@ export default function KelolaPromoUmum() {
           )}
           <button
             onClick={handleAdd}
-            className="w-full py-3 rounded-2xl font-semibold transition active:scale-95"
-            style={{
-              backgroundColor: "#800000",
-              color: "#fff",
-              boxShadow: "0 4px 10px rgba(128,0,0,0.5)",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#990000")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#800000")
-            }
+            className="w-full py-3 rounded-2xl font-semibold bg-maroon text-white hover:bg-red-700 transition"
           >
             Simpan Promo
           </button>
@@ -186,12 +151,7 @@ export default function KelolaPromoUmum() {
               promoUmum.map((promo) => (
                 <div
                   key={promo.id}
-                  className="flex space-x-4 border rounded-2xl p-4 items-center shadow-inner"
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "1.5px solid #800000",
-                    boxShadow: "inset 0 0 10px rgba(128,0,0,0.1)",
-                  }}
+                  className="flex space-x-4 border rounded-2xl p-4 items-center shadow-inner border-maroon"
                 >
                   {promo.image && (
                     <img
