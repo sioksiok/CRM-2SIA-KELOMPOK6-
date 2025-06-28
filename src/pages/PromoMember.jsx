@@ -1,5 +1,5 @@
 import React from "react";
-import { usePromos } from "../context/PromoContext"; // ✅ pastikan path benar
+import { usePromos } from "../context/PromoContext"; // ✅ Pastikan file ini ada di src/context/PromoContext.js
 
 export default function PromoMember() {
   const { promos } = usePromos();
@@ -16,20 +16,20 @@ export default function PromoMember() {
       (promo.level.includes("Gold") || promo.level.includes("Platinum"))
   );
 
-  // Sisanya dianggap promo tambahan
+  // Promo kecil lainnya
   const smallPromos = memberPromos.filter(
     (promo) => promo.id !== (largePromo?.id ?? null)
   );
 
   return (
     <div className="relative">
-      {/* Background image */}
+      {/* Background Image */}
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
         style={{ backgroundImage: "url('/treatment1.jpg')" }}
-      />
+      ></div>
 
-      {/* Konten utama */}
+      {/* Konten Utama */}
       <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
         <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
           Our Special Offers for Members
@@ -39,8 +39,8 @@ export default function PromoMember() {
         </p>
 
         {memberPromos.length > 0 ? (
-          <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
-            {/* Promo tambahan */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+            {/* Kartu Promo Kecil */}
             <div className="flex flex-col space-y-6">
               {smallPromos.map((promo) => (
                 <div
@@ -52,7 +52,7 @@ export default function PromoMember() {
                     alt={promo.title}
                     className="w-1/3 object-cover h-full"
                   />
-                  <div className="p-4 flex flex-col justify-between">
+                  <div className="p-4 flex flex-col justify-between w-2/3">
                     <div>
                       <h2 className="text-md font-semibold text-gray-800 mb-1">
                         {promo.title}
@@ -77,7 +77,7 @@ export default function PromoMember() {
               ))}
             </div>
 
-            {/* Promo utama */}
+            {/* Kartu Promo Utama */}
             {largePromo && (
               <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
                 <img
@@ -110,7 +110,7 @@ export default function PromoMember() {
             )}
           </div>
         ) : (
-          <p className="text-center text-gray-600 text-lg">
+          <p className="text-center text-gray-600 text-lg mt-10">
             Belum ada promo member yang tersedia saat ini.
           </p>
         )}
