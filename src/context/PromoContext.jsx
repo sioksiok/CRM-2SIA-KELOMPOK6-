@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 // Buat Context
 const PromoContext = createContext();
@@ -54,17 +54,28 @@ const initialPromos = [
 export const PromoProvider = ({ children }) => {
   const [promos, setPromos] = useState(initialPromos);
 
+  // Tambah promo
   const addPromo = (newPromo) => {
     const promoWithId = { ...newPromo, id: Date.now() };
     setPromos((prev) => [...prev, promoWithId]);
   };
 
+  // Hapus promo
   const deletePromo = (id) => {
     setPromos((prev) => prev.filter((promo) => promo.id !== id));
   };
 
+  // Update promo (untuk fitur edit)
+  const updatePromo = (updatedPromo) => {
+    setPromos((prev) =>
+      prev.map((promo) => (promo.id === updatedPromo.id ? updatedPromo : promo))
+    );
+  };
+
   return (
-    <PromoContext.Provider value={{ promos, addPromo, deletePromo }}>
+    <PromoContext.Provider
+      value={{ promos, setPromos, addPromo, deletePromo, updatePromo }}
+    >
       {children}
     </PromoContext.Provider>
   );
