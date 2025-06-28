@@ -14,7 +14,6 @@ const menuItems = [
   { name: 'Feedback', icon: MessageCircleMore, path: '/feedback' },
   { name: 'Promo Member', icon: Megaphone, path: '/promo-member' },
   { name: 'Promo Umum', icon: Megaphone, path: '/promo-umum' },
-  { name: 'FAQ', icon: MessageCircleQuestion, path: '/faq' },
   { name: 'Pusat Bantuan', icon: MessageCircleQuestion, path: '/pusat-bantuan' },
 ];
 
