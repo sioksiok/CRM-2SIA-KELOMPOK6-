@@ -33,8 +33,7 @@ export default function CekStatusMember() {
     if (result) {
       setFoundMember(result);
     } else {
-      alert("Nomor telepon tidak ditemukan. Dialihkan ke halaman pendaftaran.");
-      navigate("/pendaftaran");
+      alert("Nomor telepon tidak ditemukan.");
     }
   };
 
