@@ -1,4 +1,5 @@
-// src/App.jsx
+
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import LayoutUser from "./components/LayoutUser";
@@ -17,7 +18,7 @@ import Akun from "./pages/Akun";
 import ManagePromoAdmin from "./pages/ManagePromoAdmin";
 import AktivitasPelanggan from "./pages/AktivitasPelanggan";
 import PemesananLayanan from "./pages/PemesananLayananProduk";
-import PusatBantuan from "./pages/PusatBantuan"; // dipakai juga oleh user
+import PusatBantuan from "./pages/PusatBantuan";
 import AdminFAQ from "./pages/AdminFAQ";
 
 // Halaman User
@@ -30,11 +31,11 @@ import PromoNonMember from "./pages/PromoNonMember";
 // Halaman Autentikasi
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import KelolaPromoUmum from "./pages/KelolaPromoPromoUmum";
+import KelolaPromoUmum from "./pages/KelolaPromoUmum"; // Ganti 'KelolaPromoPromoUmum' menjadi 'KelolaPromoUmum'
 
 function App() {
   return (
-    <FaqProvider> {/* Bungkus seluruh Routes dengan FaqProvider */}
+    <FaqProvider>
       <Routes>
         {/* Layout untuk Admin */}
         <Route element={<MainLayout />}>
@@ -50,8 +51,6 @@ function App() {
           <Route path="/kelola-promo-umum" element={<KelolaPromoUmum />} />
           <Route path="/aktivitas-pelanggan" element={<AktivitasPelanggan />} />
           <Route path="/admin-faq" element={<AdminFAQ />} />
-          {/* PusatBantuan juga bisa diakses admin, jika memang begitu */}
-          {/* <Route path="/pusat-bantuan-admin" element={<PusatBantuan />} /> */}
         </Route>
 
         {/* Layout untuk User */}
@@ -61,7 +60,7 @@ function App() {
           <Route path="/promo-umum" element={<PromoNonMember />} />
           <Route path="/foryou" element={<ForYou />} />
           <Route path="/feedback" element={<FeedbackUser />} />
-          <Route path="/pusat-bantuan" element={<PusatBantuan />} /> {/* PusatBantuan diakses user */}
+          <Route path="/pusat-bantuan" element={<PusatBantuan />} />
         </Route>
 
         {/* Autentikasi */}
