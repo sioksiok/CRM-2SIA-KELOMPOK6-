@@ -1,9 +1,13 @@
-// src/components/PromoMember.js
+
 import React from "react";
-import { usePromos } from '../context/PromoContext'; // Import hook
+// PERBAIKAN JALUR IMPORT DI SINI
+import { usePromos } from '../context/PromoContext'; // Jika PromoMember.jsx di src/pages dan PromoContext.js di src/context
+// Atau jika PromoContext.js di src/context/PromoContext.js dan PromoMember.jsx di src/pages/PromoMember.jsx
+// Anda mungkin perlu: import { usePromos } from '../../context/PromoContext';
+// Mari kita asumsikan struktur standar: src/pages dan src/context
 
 export default function PromoMember() {
-  const { promos } = usePromos(); // Dapatkan semua promo dari context
+  const { promos } = usePromos();
 
   // Filter hanya promo yang bertipe 'member' dan aktif
   const memberPromos = promos.filter(promo => promo.type === 'member' && promo.active);
@@ -11,7 +15,6 @@ export default function PromoMember() {
   // Jika Anda ingin memisahkan promo besar di kolom kanan, Anda bisa lakukan seperti ini:
   const largePromo = memberPromos.find(promo => promo.level && (promo.level.includes("Gold") || promo.level.includes("Platinum")));
   const smallPromos = memberPromos.filter(promo => promo.id !== (largePromo ? largePromo.id : null));
-
 
   return (
     <div className="relative">
@@ -41,8 +44,8 @@ export default function PromoMember() {
                   className="bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex"
                 >
                   <img
-                    src={promo.image} // Gunakan properti 'image'
-                    alt={promo.title} // Gunakan properti 'title'
+                    src={promo.image}
+                    alt={promo.title}
                     className="w-1/3 object-cover h-full"
                   />
                   <div className="p-4 flex flex-col justify-between">
