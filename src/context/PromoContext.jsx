@@ -1,9 +1,9 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Membuat Context
+// Buat Context
 const PromoContext = createContext();
 
-// Data promo awal
+// Data dummy promo awal
 const initialPromos = [
   {
     id: 1,
@@ -13,8 +13,8 @@ const initialPromos = [
     originalPrice: 150000,
     discountedPrice: 135000,
     active: true,
-    image: "",
-    type: "member"
+    image: "https://via.placeholder.com/200x150?text=Silver",
+    type: "member",
   },
   {
     id: 2,
@@ -24,56 +24,33 @@ const initialPromos = [
     originalPrice: 100000,
     discountedPrice: 0,
     active: true,
-    image: "https://example.com/promo_umum.jpg",
-    type: "umum"
+    image: "https://via.placeholder.com/200x150?text=Umum",
+    type: "umum",
   },
   {
     id: 3,
     title: "Advanced Yellow Laser",
     level: "Gold",
-    description: "Explore therapeutic benefits of hand massages...",
+    description: "Perawatan laser khusus untuk Gold member.",
     originalPrice: 250000,
     discountedPrice: 175000,
     active: true,
-    image: "https://cdn0-production-images-kly.akamaized.net/TFXhZ5fAer2iNHyJIk_EA9-oW44=/500x281/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3447308/original/076990400_1620103503-photo-1570172619644-dfd03ed5d881.jpeg",
-    type: "member"
+    image: "https://via.placeholder.com/200x150?text=Gold",
+    type: "member",
   },
   {
     id: 4,
-    title: "Ultimate Eye Peel",
-    level: "Silver",
-    description: "Dive into the world of hair treatment...",
-    originalPrice: 200000,
-    discountedPrice: 145000,
-    active: true,
-    image: "https://s3-publishing-cmn-svc-prd.s3.ap-southeast-1.amazonaws.com/article/ZbontmHR7NPLXxj_Q36GA/original/085539400_1639129436-Prosedur_Radiofrequency_Setrika_Wajah_untuk_Perawatan_Kulit.jpg",
-    type: "member"
-  },
-  {
-    id: 5,
     title: "CO2 Acne Scar",
     level: "Platinum",
-    description: "Embark on a journey of relaxation...",
+    description: "Perawatan wajah khusus untuk mengatasi bekas jerawat.",
     originalPrice: 300000,
     discountedPrice: 210000,
     active: true,
-    image: "https://i0.wp.com/zaloraadmin.wpcomstaging.com/wp-content/uploads/2023/11/treatment-wajah.png?resize=1200%2C620&ssl=1",
-    type: "member"
-  },
-  {
-    id: 6,
-    title: "Acne Injection",
-    level: "Gold & Platinum",
-    description: "Dive into the world of facial massages...",
-    originalPrice: 220000,
-    discountedPrice: 150000,
-    active: true,
-    image: "https://blog.atome.id/wp-content/uploads/2021/11/Simak-10-Perawatan-Kulit-Wajah-Yang-Populer-Dan-Kekinian.jpg",
-    type: "member"
+    image: "https://via.placeholder.com/200x150?text=Platinum",
+    type: "member",
   },
 ];
 
-// Provider
 export const PromoProvider = ({ children }) => {
   const [promos, setPromos] = useState(initialPromos);
 
@@ -93,5 +70,4 @@ export const PromoProvider = ({ children }) => {
   );
 };
 
-// Hook custom
 export const usePromos = () => useContext(PromoContext);
