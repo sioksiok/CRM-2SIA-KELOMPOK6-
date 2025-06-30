@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Mail, CalendarCheck, Truck, XCircle, DollarSign, Tag } from "lucide-react";
-import { useFaqs } from "../FaqContext.jsx"; // Pastikan path benar
+import { Mail, CalendarCheck, Truck, DollarSign } from "lucide-react";
+import { useFaqs } from "../FaqContext.jsx";
 
 export default function PusatBantuan() {
   const { faqs } = useFaqs();
@@ -33,22 +33,24 @@ export default function PusatBantuan() {
 
   return (
     <div className="relative min-h-screen w-full">
-      {/* Background Image only */}
+      {/* Background Image */}
       <img
         src="/treatment.jpeg"
         alt="Background"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       />
 
+      {/* Blur Overlay */}
+      <div className="absolute inset-0 backdrop-blur-md z-10" />
+
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center py-14 px-4">
-        {/* Heading */}
+      <div className="relative z-20 flex flex-col items-center py-14 px-4">
         <div className="text-center text-white mb-10">
           <h1 className="text-4xl font-bold mb-2">Ask us anything</h1>
           <p className="text-lg">Have any questions? We're here to assist you.</p>
         </div>
 
-        {/* Dropdown Kategori */}
+        {/* Dropdown */}
         <div className="mb-8">
           <select
             className="border border-white bg-white text-maroon px-4 py-2 rounded-xl focus:outline-none"
@@ -60,9 +62,7 @@ export default function PusatBantuan() {
             onChange={(e) => setSelectedKategori(e.target.value)}
           >
             {uniqueCategories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
+              <option key={category} value={category}>{category}</option>
             ))}
           </select>
         </div>
