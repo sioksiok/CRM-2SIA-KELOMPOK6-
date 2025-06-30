@@ -15,7 +15,6 @@ import RekamMedis from "./pages/RekamMedis";
 import Akun from "./pages/Akun";
 import ManagePromoAdmin from "./pages/ManagePromoAdmin";
 import AktivitasPelanggan from "./pages/AktivitasPelanggan";
-import PemesananLayanan from "./pages/PemesananLayananProduk";
 import PusatBantuan from "./pages/PusatBantuan";
 import AdminFAQ from "./pages/AdminFAQ";
 import KelolaPromoUmum from "./pages/KelolaPromoUmum";
@@ -31,6 +30,10 @@ import PromoNonMember from "./pages/PromoNonMember";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 
+// Halaman Pemesanan (BARU)
+import PemesananProduk from "./pages/PemesananProduk";
+import PemesananLayanan from "./pages/PemesananLayanan";
+
 function App() {
   return (
     <FaqProvider>
@@ -43,12 +46,14 @@ function App() {
           <Route path="/produk" element={<ProductManagement />} />
           <Route path="/cek-status-member" element={<CekStatusMember />} />
           <Route path="/rekam-medis" element={<RekamMedis />} />
-          <Route path="/pemesanan-layanan-produk" element={<PemesananLayanan />} />
           <Route path="/akun" element={<Akun />} />
           <Route path="/manage-promo-admin" element={<ManagePromoAdmin />} />
           <Route path="/kelola-promo-umum" element={<KelolaPromoUmum />} />
           <Route path="/aktivitas-pelanggan" element={<AktivitasPelanggan />} />
           <Route path="/admin-faq" element={<AdminFAQ />} />
+
+          {/* Rute baru untuk Pemesanan Layanan */}
+          <Route path="/pemesanan-layanan" element={<PemesananLayanan />} />
         </Route>
 
         {/* Layout untuk User */}
@@ -59,6 +64,9 @@ function App() {
           <Route path="/foryou" element={<ForYou />} />
           <Route path="/feedback" element={<FeedbackUser />} />
           <Route path="/pusat-bantuan" element={<PusatBantuan />} />
+
+          {/* Rute baru untuk Pemesanan Produk */}
+          <Route path="/pemesanan-produk" element={<PemesananProduk />} />
         </Route>
 
         {/* Autentikasi */}
