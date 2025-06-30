@@ -22,7 +22,7 @@ const SidebarUser = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <aside className="bg-[#F9F3F3] w-64 h-screen shadow-lg px-4 py-6 hidden md:block">
+    <aside className="bg-[#F9F3F3] w-64 h-screen px-4 py-6 hidden md:block overflow-hidden">
       {/* Logo Aira Clinic */}
       <div className="flex items-center gap-2 mb-10 ml-2">
         <img src="/logoaira.png" alt="Aira Clinic Logo" className="w-10 h-10" />
@@ -35,7 +35,7 @@ const SidebarUser = () => {
           const Icon = item.icon;
           return (
             <Link
-              key={`${item.name}-${index}`} // Unik agar tidak error
+              key={`${item.name}-${index}`}
               to={item.path}
               className={`flex items-center gap-3 px-3 py-3 rounded-lg transition ${
                 isActive(item.path)
