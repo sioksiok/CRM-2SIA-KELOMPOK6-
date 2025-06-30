@@ -1,166 +1,66 @@
-import React, { useState } from "react";
 
-// 25 Dummy produk dengan gambar dari picsum.photos
-const produkList = [
-  {
-    id: "P001",
-    nama: "Sabun Wajah Aira",
-    harga: 75000,
-    gambar: "https://i.pinimg.com/736x/40/19/f0/4019f0ecc970788a2ec656f951db2e42.jpg",
-  },
-  {
-    id: "P002",
-    nama: "Toner Brightening",
-    harga: 85000,
-    gambar: "https://i.pinimg.com/736x/09/29/6d/09296d626de27a2f0df92865ab33a8c1.jpg",
-  },
-  {
-    id: "P003",
-    nama: "Serum Vitamin C",
-    harga: 120000,
-    gambar: "https://i.pinimg.com/736x/33/5d/38/335d38ef8060261040c8a4051619b0f1.jpg",
-  },
-  {
-    id: "P004",
-    nama: "Moisturizer Aira",
-    harga: 95000,
-    gambar: "https://i.pinimg.com/736x/11/4b/f3/114bf34a177d177890902907e21d3362.jpg",
-  },
-  {
-    id: "P005",
-    nama: "Sunscreen SPF 50",
-    harga: 100000,
-    gambar: "https://i.pinimg.com/736x/b0/39/e8/b039e86588b2cf8cf3c6aaf5fb573949.jpg",
-  },
-  {
-    id: "P006",
-    nama: "Facial Wash Gel",
-    harga: 80000,
-    gambar: "https://i.pinimg.com/736x/4b/36/2d/4b362d81423cb408279917951808c67a.jpg",
-  },
-  {
-    id: "P007",
-    nama: "Night Cream",
-    harga: 110000,
-    gambar: "https://i.pinimg.com/736x/93/9c/08/939c08535fe433ad3dbbf53f09a43891.jpg",
-  },
-  {
-    id: "P008",
-    nama: "Day Cream",
-    harga: 105000,
-    gambar: "https://i.pinimg.com/736x/1f/69/e2/1f69e2fbbf7b8ea8aadbbf20b94dca24.jpg",
-  },
-  {
-    id: "P009",
-    nama: "Eye Cream",
-    harga: 115000,
-    gambar: "https://i.pinimg.com/736x/0b/17/b7/0b17b7cfadab0c9b1e84ac4bc9d28e61.jpg",
-  },
-  {
-    id: "P010",
-    nama: "Masker Lumpur",
-    harga: 70000,
-    gambar: "https://i.pinimg.com/736x/07/e8/1a/07e81a1f8dff91ceb494b380919fe8a4.jpg",
-  },
-  {
-    id: "P011",
-    nama: "Acne Spot Gel",
-    harga: 85000,
-    gambar: "https://i.pinimg.com/736x/3d/04/db/3d04dbd2c521bea996167f33a4dcfc97.jpg",
-  },
-  {
-    id: "P012",
-    nama: "Cleansing Oil",
-    harga: 90000,
-    gambar: "https://i.pinimg.com/736x/f0/d5/52/f0d552399bb6d3f3507661265b8c6e6f.jpg",
-  },
-  {
-    id: "P013",
-    nama: "Exfoliating Toner",
-    harga: 95000,
-    gambar: "https://i.pinimg.com/736x/6b/75/08/6b7508153453f802a2e07b856b3393d5.jpg",
-  },
-  {
-    id: "P014",
-    nama: "Hydrating Essence",
-    harga: 110000,
-    gambar: "https://i.pinimg.com/736x/de/e7/0b/dee70bffb6937e87fc696b6d64065488.jpg",
-  },
-  {
-    id: "P015",
-    nama: "Lip Balm",
-    harga: 50000,
-    gambar: "https://i.pinimg.com/736x/ac/bb/68/acbb68716560a8f81333400da7f3cd6c.jpg",
-  },
-  {
-    id: "P016",
-    nama: "Face Mist",
-    harga: 80000,
-    gambar: "https://i.pinimg.com/736x/07/61/b1/0761b134524ef90a3be07aa01b97c3a7.jpg",
-  },
-  {
-    id: "P017",
-    nama: "Brightening Mask",
-    harga: 88000,
-    gambar: "https://i.pinimg.com/736x/23/7a/27/237a272d06428cde3ae3df09da5eb2be.jpg",
-  },
-  {
-    id: "P018",
-    nama: "Anti Aging Cream",
-    harga: 130000,
-    gambar: "https://i.pinimg.com/736x/84/82/d8/8482d86e4168ffd6a76f89a70e950cc0.jpg",
-  },
-  {
-    id: "P019",
-    nama: "Peeling Gel",
-    harga: 78000,
-    gambar: "https://i.pinimg.com/736x/68/89/c9/6889c92b837c0d0ca018398141e954e5.jpg",
-  },
-  {
-    id: "P020",
-    nama: "Whitening Lotion",
-    harga: 95000,
-    gambar: "https://i.pinimg.com/736x/82/57/42/82574229808eeabda99901a44eb7d014.jpg",
-  },
-  {
-    id: "P021",
-    nama: "Body Scrub",
-    harga: 88000,
-    gambar: "https://i.pinimg.com/736x/4d/4b/17/4d4b17f9fabcfbfe7d1d7614f17f0e10.jpg",
-  },
-  {
-    id: "P022",
-    nama: "Hair Tonic",
-    harga: 99000,
-    gambar: "https://i.pinimg.com/736x/cf/dc/98/cfdc987ab0088b531bb57e3de552f011.jpg",
-  },
-  {
-    id: "P023",
-    nama: "Foot Cream",
-    harga: 70000,
-    gambar: "https://i.pinimg.com/736x/63/28/b0/6328b0ce45d7ad04af913cd8aa1dee36.jpg",
-  },
-  {
-    id: "P024",
-    nama: "Hand Cream",
-    harga: 68000,
-    gambar: "https://i.pinimg.com/736x/75/bf/9c/75bf9c68757b8ae63885be0fecd5af95.jpg",
-  },
-  {
-    id: "P025",
-    nama: "Makeup Remover",
-    harga: 85000,
-    gambar: "https://i.pinimg.com/736x/f5/42/65/f5426567e2ea29f262fc284fc95a9d8c.jpg",
-  },
-];
+import React, { useState, useEffect } from "react";
+import { supabase } from "../supabase";
 
 export default function PemesananProduk() {
   const [nama, setNama] = useState("");
   const [produkDipilih, setProdukDipilih] = useState("");
   const [catatan, setCatatan] = useState("");
   const [histori, setHistori] = useState([]);
+  const [produkList, setProdukList] = useState([]); // State untuk daftar produk dari Supabase
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  // Fungsi untuk mengambil daftar produk dari Supabase
+  useEffect(() => {
+    async function getProduk() {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("produk") // Nama tabel produk Anda
+        .select("id, nama, harga, gambar");
+
+      if (error) {
+        console.error("Error fetching produk:", error.message);
+        setError("Gagal memuat daftar produk.");
+      } else {
+        setProdukList(data);
+      }
+      setLoading(false);
+    }
+
+    getProduk();
+  }, []); // [] berarti efek ini hanya berjalan sekali saat komponen dimuat
+
+  // Fungsi untuk mengambil riwayat pemesanan produk dari Supabase
+  useEffect(() => {
+    async function getHistoriPemesananProduk() {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("pemesanan_produk") // Nama tabel pemesanan produk Anda
+        .select("nama_pelanggan, nama_produk, harga_produk, catatan, tanggal_pemesanan")
+        .order("tanggal_pemesanan", { ascending: false }); // Urutkan dari yang terbaru
+
+      if (error) {
+        console.error("Error fetching histori produk:", error.message);
+        setError("Gagal memuat riwayat pemesanan produk.");
+      } else {
+        // Sesuaikan nama field agar cocok dengan struktur histori Anda sebelumnya
+        const formattedHistori = data.map(item => ({
+          nama: item.nama_pelanggan,
+          produk: item.nama_produk,
+          harga: item.harga_produk,
+          catatan: item.catatan,
+          tanggal: new Date(item.tanggal_pemesanan).toLocaleString(),
+        }));
+        setHistori(formattedHistori);
+      }
+      setLoading(false);
+    }
+
+    getHistoriPemesananProduk();
+  }, []); // [] berarti efek ini hanya berjalan sekali saat komponen dimuat
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!nama || !produkDipilih) {
       alert("Lengkapi semua data terlebih dahulu.");
@@ -168,19 +68,74 @@ export default function PemesananProduk() {
     }
 
     const item = produkList.find((i) => i.id === produkDipilih);
+    if (!item) {
+      alert("Produk tidak ditemukan.");
+      return;
+    }
+
+    // Data yang akan disimpan ke Supabase
     const dataBaru = {
-      nama,
-      produk: item.nama,
-      harga: item.harga,
-      catatan,
-      tanggal: new Date().toLocaleString(),
+      nama_pelanggan: nama,
+      id_produk: item.id, // ID produk dari tabel produk
+      nama_produk: item.nama, // Nama produk (denormalized)
+      harga_produk: item.harga, // Harga produk (denormalized)
+      catatan: catatan,
+      // tanggal_pemesanan akan diisi otomatis oleh default value di Supabase
     };
 
-    setHistori([dataBaru, ...histori]);
-    setNama("");
-    setProdukDipilih("");
-    setCatatan("");
+    setLoading(true);
+    const { error } = await supabase
+      .from("pemesanan_produk") // Nama tabel pemesanan produk Anda
+      .insert([dataBaru]);
+
+    if (error) {
+      console.error("Error inserting data:", error.message);
+      setError("Gagal menyimpan pemesanan produk.");
+    } else {
+      alert("Pemesanan produk berhasil!");
+      // Setelah berhasil menyimpan, ambil ulang riwayat untuk memperbarui tampilan
+      const { data: updatedHistori, error: historiError } = await supabase
+        .from("pemesanan_produk")
+        .select("nama_pelanggan, nama_produk, harga_produk, catatan, tanggal_pemesanan")
+        .order("tanggal_pemesanan", { ascending: false });
+
+      if (historiError) {
+        console.error("Error fetching updated histori:", historiError.message);
+        setError("Gagal memperbarui riwayat pemesanan.");
+      } else {
+        const formattedUpdatedHistori = updatedHistori.map(item => ({
+          nama: item.nama_pelanggan,
+          produk: item.nama_produk,
+          harga: item.harga_produk,
+          catatan: item.catatan,
+          tanggal: new Date(item.tanggal_pemesanan).toLocaleString(),
+        }));
+        setHistori(formattedUpdatedHistori);
+      }
+
+      // Reset form
+      setNama("");
+      setProdukDipilih("");
+      setCatatan("");
+    }
+    setLoading(false);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fce8e8]">
+        Memuat data produk dan riwayat pemesanan...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500 bg-[#fce8e8]">
+        Terjadi kesalahan: {error}
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen py-10 px-6 lg:px-20 overflow-hidden">
@@ -258,8 +213,9 @@ export default function PemesananProduk() {
               <button
                 type="submit"
                 className="w-full py-3 rounded-xl font-semibold bg-[#800000] text-white hover:bg-[#990000] transition"
+                disabled={loading} // Nonaktifkan tombol saat loading
               >
-                Pesan Sekarang
+                {loading ? "Memproses..." : "Pesan Sekarang"}
               </button>
             </form>
 
@@ -276,7 +232,7 @@ export default function PemesananProduk() {
                 <ul className="space-y-3 max-h-64 overflow-y-auto pr-1">
                   {histori.map((item, index) => (
                     <li
-                      key={index}
+                      key={index} // Idealnya gunakan ID unik dari Supabase sebagai key
                       className="p-3 rounded-xl border border-[#800000] bg-[#fff0f0] text-sm"
                     >
                       <p><strong>Nama:</strong> {item.nama}</p>
