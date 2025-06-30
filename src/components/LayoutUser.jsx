@@ -1,19 +1,20 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-
 import SidebarUser from './SidebarUser';
-import Header from './Header'; // ✅ dipanggil di sini
+import Header from './Header';
 
 const LayoutUser = () => {
   return (
-    <div className="flex min-h-screen bg-lightgray">
-      <div className="w-64">
+    <div className="flex min-h-screen w-full overflow-hidden bg-lightgray">
+      {/* Sidebar - tetap statis tanpa scroll */}
+      <div className="w-64 shrink-0">
         <SidebarUser />
       </div>
 
-      <div className="flex-grow">
-        <Header /> {/* ✅ digunakan di sini */}
-        <main className="p-8">
+      {/* Konten utama dengan scroll di area ini saja */}
+      <div className="flex flex-col flex-1 h-screen overflow-hidden">
+        <Header />
+        <main className="flex-1 overflow-y-auto p-6">
           <Outlet />
         </main>
       </div>
