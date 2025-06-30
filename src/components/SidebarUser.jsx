@@ -5,6 +5,7 @@ import {
   Heart,
   MessageCircleMore,
   MessageCircleQuestion,
+  ShoppingBagIcon,
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ const menuItems = [
   { name: 'Promo Member', icon: Megaphone, path: '/promo-member' },
   { name: 'Promo Umum', icon: Megaphone, path: '/promo-umum' },
   { name: 'Pusat Bantuan', icon: MessageCircleQuestion, path: '/pusat-bantuan' },
+  { name: 'Pemesanan Produk', icon: ShoppingBagIcon, path: '/pemesanan-produk'},
 ];
 
 const SidebarUser = () => {

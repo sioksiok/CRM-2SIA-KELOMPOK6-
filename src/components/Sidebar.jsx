@@ -14,7 +14,7 @@ const menuItems = [
   { name: 'Aktivitas Pelanggan', icon: Users, path: '/aktivitas-pelanggan' },
   { name: 'Segmentasi Pelanggan', icon: User, path: '/cek-status-member' },
   { name: 'Kelola Promo Pelanggan', icon: Gift, path: '/manage-promo-admin' },
-  { name: 'Pemesanan Layanan & Produk', icon: ShoppingBagIcon, path: '/pemesanan-layanan-produk' },
+  { name: 'Pemesanan Layanan', icon: ShoppingBagIcon, path: '/pemesanan-layanan'},
   { name: 'Admin FAQ', icon: Box, path: '/admin-faq' },
 ]
 
