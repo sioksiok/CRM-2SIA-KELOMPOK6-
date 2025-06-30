@@ -1,11 +1,11 @@
-// src/components/ManagePromoAdmin.js
+
 import React, { useState } from "react";
 import { usePromos } from "../context/PromoContext";
-import { useNavigate } from "react-router-dom"; // ✅ Tambahkan ini
+import { useNavigate } from "react-router-dom"; 
 
 export default function ManagePromoAdmin() {
   const { promos, addPromo, deletePromo } = usePromos();
-  const navigate = useNavigate(); // ✅ Gunakan ini untuk navigasi
+  const navigate = useNavigate(); 
 
   const [form, setForm] = useState({
     title: "",
