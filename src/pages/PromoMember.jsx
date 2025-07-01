@@ -20,23 +20,27 @@ export default function PromoMember() {
 
   return (
     <div className="relative">
+      {/* Background blur */}
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
         style={{ backgroundImage: "url('/treatment1.jpg')" }}
       />
 
       <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
+        {/* Header */}
         <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
           Our Special Offers for Members
         </h1>
         <p className="text-center text-gray-600 text-sm sm:text-base max-w-3xl mx-auto mb-12">
           Unlock exclusive beauty experiences with our limited-time promotions.
+          Discover your path to radiant confidence. Explore now.
         </p>
 
+        {/* Promo Grid */}
         {memberPromos.length > 0 ? (
-          <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
-            {/* Promo tambahan */}
-            <div className="flex flex-col space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {/* Kiri - Promo kecil */}
+            <div className="flex flex-col space-y-6 lg:col-span-2">
               {smallPromos.map((promo) => (
                 <div
                   key={promo.id}
@@ -52,19 +56,8 @@ export default function PromoMember() {
                       <h2 className="text-md font-semibold text-gray-800 mb-1">
                         {promo.title}
                       </h2>
-                      <p className="text-sm text-gray-600 mb-1">
+                      <p className="text-sm text-gray-600">
                         {promo.description}
-                      </p>
-                    </div>
-                    <div className="mt-2">
-                      <p className="text-xs text-indigo-600 font-medium mb-1">
-                        Member Level: {promo.level}
-                      </p>
-                      <p className="text-sm text-gray-500 line-through">
-                        Rp {promo.originalPrice.toLocaleString("id-ID")}
-                      </p>
-                      <p className="text-base text-pink-600 font-bold">
-                        Rp {promo.discountedPrice.toLocaleString("id-ID")}
                       </p>
                     </div>
                   </div>
@@ -72,13 +65,13 @@ export default function PromoMember() {
               ))}
             </div>
 
-            {/* Promo utama */}
+            {/* Kanan - Promo utama */}
             {largePromo && (
-              <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
+              <div className="bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
                 <img
                   src={largePromo.image}
                   alt={largePromo.title}
-                  className="h-72 w-full object-cover"
+                  className="w-full object-cover h-80"
                 />
                 <div className="p-6 flex flex-col justify-between h-full">
                   <div>
