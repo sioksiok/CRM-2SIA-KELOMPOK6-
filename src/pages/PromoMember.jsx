@@ -1,8 +1,44 @@
 import React from "react";
-import { usePromos } from "../context/PromoContext.jsx";
 
 export default function PromoMember() {
-  const { promos } = usePromos();
+  const promos = [
+    {
+      id: 1,
+      title: "Laser Proyellow",
+      level: "Gold",
+      type: "member",
+      active: true,
+      description: "Diskon spesial untuk perawatan wajah premium.",
+      image:
+        "https://i.pinimg.com/736x/74/04/f0/7404f0b39fb71f96221af7b618a9939f.jpg",
+      originalPrice: 250000,
+      discountedPrice: 175000,
+    },
+    {
+      id: 2,
+      title: "Facial Basic Silver",
+      level: "Silver",
+      type: "member",
+      active: true,
+      description: "Perawatan wajah dasar dengan harga terjangkau.",
+      image:
+        "https://i.pinimg.com/736x/94/98/b5/9498b5a5340b7b9e3df881ddd3ea0905.jpg",
+      originalPrice: 150000,
+      discountedPrice: 120000,
+    },
+    {
+      id: 3,
+      title: "Promo Bronze Cleansing",
+      level: "Bronze",
+      type: "member",
+      active: true,
+      description: "Cleansing wajah ringan untuk pemula.",
+      image:
+        "https://i.pinimg.com/736x/b1/58/d9/b158d9e4c2136e7ecbbe61417f33d051.jpg",
+      originalPrice: 100000,
+      discountedPrice: 85000,
+    },
+  ];
 
   const memberPromos = promos.filter(
     (promo) => promo.type === "member" && promo.active
@@ -22,9 +58,11 @@ export default function PromoMember() {
     <div className="relative">
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
-        style={{ backgroundImage: "url('/treatment1.jpg')" }}
+        style={{
+          backgroundImage:
+            "url('/treatment.jpeg')",
+        }}
       />
-
       <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
         <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
           Our Special Offers for Members
@@ -35,7 +73,7 @@ export default function PromoMember() {
 
         {memberPromos.length > 0 ? (
           <div className="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
-            {/* Promo tambahan */}
+            {/* Promo kecil */}
             <div className="flex flex-col space-y-6">
               {smallPromos.map((promo) => (
                 <div
@@ -72,7 +110,7 @@ export default function PromoMember() {
               ))}
             </div>
 
-            {/* Promo utama */}
+            {/* Promo besar */}
             {largePromo && (
               <div className="row-span-3 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
                 <img
