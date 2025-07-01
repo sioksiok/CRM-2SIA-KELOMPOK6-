@@ -1,8 +1,44 @@
 import React from "react";
-import { usePromos } from "../context/PromoContext.jsx";
 
 export default function PromoMember() {
-  const { promos } = usePromos();
+  const promos = [
+    {
+      id: 1,
+      title: "Laser Proyellow",
+      level: "Gold",
+      type: "member",
+      active: true,
+      description: "Diskon spesial untuk perawatan wajah premium.",
+      image:
+        "https://i.pinimg.com/736x/74/04/f0/7404f0b39fb71f96221af7b618a9939f.jpg",
+      originalPrice: 250000,
+      discountedPrice: 175000,
+    },
+    {
+      id: 2,
+      title: "Facial Basic Silver",
+      level: "Silver",
+      type: "member",
+      active: true,
+      description: "Perawatan wajah dasar dengan harga terjangkau.",
+      image:
+        "https://i.pinimg.com/736x/94/98/b5/9498b5a5340b7b9e3df881ddd3ea0905.jpg",
+      originalPrice: 150000,
+      discountedPrice: 120000,
+    },
+    {
+      id: 3,
+      title: "Promo Bronze Cleansing",
+      level: "Bronze",
+      type: "member",
+      active: true,
+      description: "Cleansing wajah ringan untuk pemula.",
+      image:
+        "https://i.pinimg.com/736x/b1/58/d9/b158d9e4c2136e7ecbbe61417f33d051.jpg",
+      originalPrice: 100000,
+      discountedPrice: 85000,
+    },
+  ];
 
   const memberPromos = promos.filter(
     (promo) => promo.type === "member" && promo.active
@@ -23,9 +59,11 @@ export default function PromoMember() {
       {/* Background blur */}
       <div
         className="absolute inset-0 bg-center bg-cover opacity-70"
-        style={{ backgroundImage: "url('/treatment1.jpg')" }}
+        style={{
+          backgroundImage:
+            "url('/treatment.jpeg')",
+        }}
       />
-
       <div className="relative py-16 px-4 sm:px-6 lg:px-20 z-10">
         {/* Header */}
         <h1 className="text-3xl sm:text-4xl font-serif font-semibold text-center text-gray-800 mb-3">
@@ -39,8 +77,8 @@ export default function PromoMember() {
         {/* Promo Grid */}
         {memberPromos.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {/* Kiri - Promo kecil */}
-            <div className="flex flex-col space-y-6 lg:col-span-2">
+            {/* Kiri - Promo kecil (2 kolom dalam 1 grid-item) */}
+            <div className="flex flex-col space-y-6 col-span-2">
               {smallPromos.map((promo) => (
                 <div
                   key={promo.id}
@@ -59,13 +97,24 @@ export default function PromoMember() {
                       <p className="text-sm text-gray-600">
                         {promo.description}
                       </p>
+                      <div className="mt-2">
+                        <p className="text-xs text-indigo-600 font-medium mb-1">
+                          Member Level: {promo.level}
+                        </p>
+                        <p className="text-sm text-gray-500 line-through">
+                          Rp {promo.originalPrice.toLocaleString("id-ID")}
+                        </p>
+                        <p className="text-base text-pink-600 font-bold">
+                          Rp {promo.discountedPrice.toLocaleString("id-ID")}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Kanan - Promo utama */}
+            {/* Kanan - Promo besar */}
             {largePromo && (
               <div className="bg-white border border-gray-300 rounded-md shadow-md overflow-hidden flex flex-col">
                 <img

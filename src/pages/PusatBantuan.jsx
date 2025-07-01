@@ -1,31 +1,25 @@
-
 import React, { useState } from "react";
-import { Mail, CalendarCheck, Truck, XCircle, DollarSign, Tag } from "lucide-react";
-import { useFaqs } from "../FaqContext.jsx"; // <<< PERUBAHAN DI SINI: Tambahkan .jsx
-// Sesuaikan path jika FaqContext.jsx ada di folder lain
+import { Mail, CalendarCheck, Truck, DollarSign } from "lucide-react";
+import { useFaqs } from "../FaqContext.jsx";
 
 export default function PusatBantuan() {
-  // Ambil data FAQ dari Context
   const { faqs } = useFaqs();
   const [selectedKategori, setSelectedKategori] = useState("Semua");
 
-  // Fungsi untuk menambahkan ikon berdasarkan kategori
   const getIconForCategory = (kategori) => {
     switch (kategori) {
       case "Perawatan Kulit":
         return <Mail className="w-6 h-6 text-maroon" />;
       case "Panduan Layanan":
         return <Truck className="w-6 h-6 text-maroon" />;
-      case "Pembayaran": // Contoh kategori baru
+      case "Pembayaran":
         return <DollarSign className="w-6 h-6 text-maroon" />;
-      // Tambahkan lebih banyak kasus jika Anda memiliki kategori lain di masa mendatang
       default:
-        return <CalendarCheck className="w-6 h-6 text-maroon" />; // Ikon default
+        return <CalendarCheck className="w-6 h-6 text-maroon" />;
     }
   };
 
   const filterFaq = () => {
-    // Gabungkan data FAQ dari context dengan ikon yang sesuai
     const faqsWithIcons = faqs.map(faq => ({
       ...faq,
       icon: getIconForCategory(faq.kategori)
@@ -35,7 +29,6 @@ export default function PusatBantuan() {
     return faqsWithIcons.filter((faq) => faq.kategori === selectedKategori);
   };
 
-  // Dapatkan kategori unik dari data FAQ yang ada untuk dropdown filter
   const uniqueCategories = ["Semua", ...new Set(faqs.map(faq => faq.kategori))];
 
   return (
@@ -46,18 +39,18 @@ export default function PusatBantuan() {
         alt="Background"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       />
-      {/* Maroon Overlay */}
-      <div className="absolute inset-0 bg-[#5D2020] opacity-70 z-10" />
+
+      {/* Blur Overlay */}
+      <div className="absolute inset-0 backdrop-blur-md z-10" />
 
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center py-14 px-4">
-        {/* Heading */}
         <div className="text-center text-white mb-10">
           <h1 className="text-4xl font-bold mb-2">Ask us anything</h1>
           <p className="text-lg">Have any questions? We're here to assist you.</p>
         </div>
 
-        {/* Select Kategori */}
+        {/* Dropdown */}
         <div className="mb-8">
           <select
             className="border border-white bg-white text-maroon px-4 py-2 rounded-xl focus:outline-none"
@@ -68,9 +61,8 @@ export default function PusatBantuan() {
             value={selectedKategori}
             onChange={(e) => setSelectedKategori(e.target.value)}
           >
-            {/* Render opsi kategori secara dinamis */}
             {uniqueCategories.map((category) => (
-                <option key={category} value={category}>{category}</option>
+              <option key={category} value={category}>{category}</option>
             ))}
           </select>
         </div>
