@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../supabase';
 
-
 const PromoContext = createContext();
 
 export const PromoProvider = ({ children }) => {
@@ -28,13 +27,39 @@ export const PromoProvider = ({ children }) => {
     fetchPromos();
   }, []);
 
+  // Tambahkan promo ke state lokal
+  const addPromo = (newPromo) => {
+    setPromos((prev) => [newPromo, ...prev]);
+  };
+
+  // Hapus promo dari state lokal
+  const deletePromo = (id) => {
+    setPromos((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  // Update promo berdasarkan id
+  const updatePromo = (updatedPromo) => {
+    setPromos((prev) =>
+      prev.map((promo) =>
+        promo.id === updatedPromo.id ? updatedPromo : promo
+      )
+    );
+  };
+
   return (
-    <PromoContext.Provider value={{ promos, loading, error }}>
+    <PromoContext.Provider
+      value={{
+        promos,
+        loading,
+        error,
+        addPromo,
+        deletePromo,
+        updatePromo, // <- penting!
+      }}
+    >
       {children}
     </PromoContext.Provider>
   );
 };
 
-export const usePromos = () => {
-  return useContext(PromoContext);
-};
+export const usePromos = () => useContext(PromoContext);
